@@ -89,7 +89,7 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                                 !widget.store.isMapVisible
                                     ? "assets/icon_map_click.svg"
                                     : "assets/icon_list_view.svg",
-                                color: colorMain,
+                                color: Colors.black,
                                 height: 30,
                               ),
                             ),
@@ -108,7 +108,7 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                           "assets/message.svg",
                           allowDrawingOutsideViewBox: true,
                           height: 30,
-                          color: colorMain,
+                          color: Colors.black,
                         ),
                       ),
                     ),

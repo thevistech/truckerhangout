@@ -4,7 +4,7 @@ import 'package:flutterapp/models/brokers_dashboard.dart';
 import 'package:flutterapp/stores/dashboard_main_store.dart';
 import 'package:flutterapp/stores/job_store.dart';
 import 'package:flutterapp/ui/SignIn.dart';
-import 'package:flutterapp/ui/aboutus/details_screen.dart';
+import 'package:flutterapp/ui/aboutus/about_us_main.dart';
 import 'package:flutterapp/ui/addListing/create_projects.dart';
 import 'package:flutterapp/ui/addListing/my_listings_screen.dart';
 import 'package:flutterapp/ui/addListing/post_job_screen.dart';
@@ -330,49 +330,20 @@ class _CardsDasboardState extends State<CardDasboard> {
 
   floatingActionButton() {
     return FloatingActionButton(
-      backgroundColor: colorMain,
+      backgroundColor: Colors.white,
       onPressed: () {
-        if (selectedIndex == 0)
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return VoiceProperty(
-              dashboardStore: dashBoardMainStore,
-              userImage: imgUrl,
-            );
-          }));
-        if (selectedIndex == 1)
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return CreateProjects(
-              dashboardStore: dashBoardMainStore,
-              userImage: imgUrl,
-            );
-          }));
-
-        if (selectedIndex == 2)
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return SmartSearchCategory(
-              currentUserImage: imgUrl,
-            );
-          }));
-
-        if (selectedIndex == 3)
-          Navigator.push(context, MaterialPageRoute(builder: (context) {
-            return PostJobScreen(
-              userImage: imgUrl,
-            );
-          }));
+//          Navigator.push(context, MaterialPageRoute(builder: (context) {
+//            return VoiceProperty(
+//              dashboardStore: dashBoardMainStore,
+//              userImage: imgUrl,
+//            );
+//          }));
       },
       tooltip: "Centre FAB",
       child: Container(
         margin: EdgeInsets.all(15.0),
-        child: SvgPicture.asset(
-          selectedIndex == 0
-              ? "assets/icon_home_add.svg"
-              : selectedIndex == 1
-                  ? "assets/icon_projects_add.svg"
-                  : selectedIndex == 2
-                      ? "assets/icon_search.svg"
-                      : "assets/icon_jobs_add.svg",
-          color: Colors.white,
+        child: SvgPicture.asset("assets/add_line.svg",
+          color: Colors.black,
           height: 25,
         ),
       ),
@@ -410,12 +381,12 @@ class _CardsDasboardState extends State<CardDasboard> {
               child: InkWell(
                 onTap: () {
                   updateTabSelection(1, "Projects");
-                  _onSelectItemFromBottomBar(1);
+                 _onSelectItemFromBottomBar(1);
                 },
                 child: SvgPicture.asset(
                   selectedIndex == 1
-                      ? "assets/icon_projects_click.svg"
-                      : "assets/icon_projects.svg",
+                      ? "assets/truk_line.svg"
+                      : "assets/truk_line.svg",
                   height: 25,
                   color: Colors.black,
                 ),

@@ -234,7 +234,7 @@ class _PostWidgetState extends State<PostWidget> {
                 padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: colorMain,
+                      color: Colors.black,
                     ),
                     borderRadius: BorderRadius.circular(3.0)),
                 child: Text(
@@ -338,7 +338,6 @@ class _PostWidgetState extends State<PostWidget> {
                 'assets/comment.svg',
                 height: 28,
                 width: 28,
-                color: colorMain,
               ),
             ),
 
@@ -361,7 +360,6 @@ class _PostWidgetState extends State<PostWidget> {
                   'assets/Inbox2.svg',
                   height: 28,
                   width: 28,
-                  color: colorMain,
                 ),
               ),
             ),
@@ -381,7 +379,8 @@ class _PostWidgetState extends State<PostWidget> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          border: Border.all(color: colorMain, width: 1),
+                        color: smokeybgColor,
+                         // border: Border.all(color: colorMain, width: 1),
                           borderRadius: BorderRadius.circular(32.0)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -445,7 +444,6 @@ class _PostWidgetState extends State<PostWidget> {
                    'assets/property_details_line.svg',
                    height: 28,
                    width: 28,
-                   color: colorMain,
                  ),
                ),
              ),
@@ -461,13 +459,11 @@ class _PostWidgetState extends State<PostWidget> {
                           'assets/save_filled.svg',
                           height: 28,
                           width: 28,
-                          color: colorMain,
                         )
                       : SvgPicture.asset(
                           'assets/save.svg',
                           height: 28,
                           width: 28,
-                          color: colorMain,
                         ),
                 ),
               ),
@@ -542,7 +538,7 @@ class _PostWidgetState extends State<PostWidget> {
                                   padding: const EdgeInsets.only(bottom: 4.0),
                                   child: Text(
                                     "View all ${widget.post.info.noOfComments} comments",
-                                    style: TextStyle(color: colorMain),
+                                    style: TextStyle(color: Colors.black),
                                   ),
                                 ),
                               );

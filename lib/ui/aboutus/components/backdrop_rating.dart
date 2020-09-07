@@ -23,7 +23,7 @@ class BackdropAndRating extends StatelessWidget {
               borderRadius: BorderRadius.only(bottomLeft: Radius.circular(50)),
               image: DecorationImage(
                 fit: BoxFit.cover,
-                image: AssetImage('assets/property3.jpg'),
+                image: AssetImage('assets/intro_03.png'),
               ),
             ),
           ),
@@ -36,7 +36,7 @@ class BackdropAndRating extends StatelessWidget {
               width: size.width * 0.9,
               height: 70,
               decoration: BoxDecoration(
-                color: Colors.white,
+                color:colorMain,
                 borderRadius: BorderRadius.only(
                   bottomLeft: Radius.circular(50),
                   topLeft: Radius.circular(50),
@@ -54,11 +54,11 @@ class BackdropAndRating extends StatelessWidget {
                     const EdgeInsets.symmetric(horizontal: kDefaultPadding),
                 child: Center(
                   child: Text(
-                    'Broker Circle',
+                    'Trucker Hangout',
                     style: TextStyle(
-                      fontSize: 32,
-                      color: colorMain,
-                      fontWeight: FontWeight.w800
+                      fontSize: 30,
+                      color: Colors.white,
+                      fontWeight: FontWeight.w600
                     ),
                   ),
                 ),
@@ -66,7 +66,7 @@ class BackdropAndRating extends StatelessWidget {
             ),
           ),
           // Back Button
-          SafeArea(child: BackButton()),
+          SafeArea(child: BackButton(color: Colors.white,)),
         ],
       ),
     );

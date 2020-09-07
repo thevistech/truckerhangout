@@ -104,13 +104,11 @@ class _TapableHeart extends AnimatedWidget {
                 'assets/like_filled.svg',
                 height: height,
                 width: width,
-                color: colorMain,
               )
             : SvgPicture.asset(
                 'assets/like.svg',
                 height: height,
                 width: width,
-                color: colorMain,
               ),
         onTap: onTap,
       ),

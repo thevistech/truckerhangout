@@ -12,6 +12,8 @@ import 'package:flutterapp/ui/smart_search/search_news_screen.dart';
 import 'package:flutterapp/ui/smart_search/search_project_screen.dart';
 import 'package:flutterapp/ui/smart_search/search_property_screen.dart';
 import 'package:flutterapp/utills/config.dart';
+import 'package:flutterapp/models/services_model.dart';
+import 'package:flutterapp/models/services_model.dart';
 
 class SmartSearchCategory extends StatefulWidget {
   var currentUserImage;
@@ -26,130 +28,6 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
     double screenHeight = MediaQuery.of(context).size.height;
     double screenWidth = MediaQuery.of(context).size.width;
     return Scaffold(
-//      appBar: AppBar(
-//        backgroundColor: colorMain,
-//        elevation: 0.0,
-//        title: Text(
-//          'Search',
-//          style: TextStyle(color: Colors.white),
-//        ),
-//        actions: actionWidgets(context, widget.currentUserImage),
-//      ),
-//      body: Stack(
-//        children: <Widget>[
-//          Positioned.fill(
-//            child: Align(
-//              alignment: Alignment.bottomCenter,
-//              child: Image.asset(
-//                "assets/building.png",
-//              ),
-//            ),
-//          ),
-//          Column(
-//            children: <Widget>[
-//              Padding(
-//                padding: const EdgeInsets.only(top: 20.0, bottom: 8),
-//                child: Text(
-//                  'What do you want to List?',
-//                  style: TextStyle(color: colorMain, fontSize: 25),
-//                ),
-//              ),
-//              Padding(
-//                padding: const EdgeInsets.only(bottom: 10),
-//                child: Text(
-//                  'Select the following category',
-//                  style: TextStyle(color: colorMain),
-//                ),
-//              ),
-//              Padding(
-//                padding: const EdgeInsets.all(8.0),
-//                child: GridView.count(
-//                  padding: EdgeInsets.zero,
-//                  physics: NeverScrollableScrollPhysics(),
-//                  shrinkWrap: true,
-//                  primary: true,
-//                  childAspectRatio: (4 / 4),
-//                  crossAxisCount: 3,
-//                  mainAxisSpacing: 8,
-//                  crossAxisSpacing: 8,
-//                  children: <Widget>[
-//                    servicesCard('assets/logo.png', 'Property', onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => SearchPropertyScreen(
-//                            userImage: widget.currentUserImage,
-//                          ),
-//                        ),
-//                      );
-//                    }),
-//                    servicesCard('assets/logo.png', 'Projects', onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => SearchProjectsScreen(
-//                            userImage: widget.currentUserImage,
-//                          ),
-//                        ),
-//                      );
-//                    }),
-//                    servicesCard('assets/logo.png', 'Brokers', onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => SearchBrokersScreen(
-//                            userImage: widget.currentUserImage,
-//                          ),
-//                        ),
-//                      );
-//                    }),
-//                    servicesCard('assets/logo.png', 'Developers', onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => SearchDeveloperScreen(
-//                            userImage: widget.currentUserImage,
-//                          ),
-//                        ),
-//                      );
-//                    }),
-//                    servicesCard('assets/logo.png', 'Estates', onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => SearchEstateScreen(
-//                            userImage: widget.currentUserImage,
-//                          ),
-//                        ),
-//                      );
-//                    }),
-//                    servicesCard('assets/logo.png', 'Jobs', onTap: () {
-//                      Navigator.push(
-//                        context,
-//                        MaterialPageRoute(
-//                          builder: (context) => SearchJobsScreen(
-//                            userImage: widget.currentUserImage,
-//                          ),
-//                        ),
-//                      );
-//                    }),
-//                    // servicesCard('assets/logo.png', 'News', onTap: () {
-//                    //   Navigator.push(
-//                    //     context,
-//                    //     MaterialPageRoute(
-//                    //       builder: (context) => SearchNewsScreen(
-//                    //         userImage: widget.currentUserImage,
-//                    //       ),
-//                    //     ),
-//                    //   );
-//                    // }),
-//                  ],
-//                ),
-//              ),
-//            ],
-//          )
-//        ],
-//      ),
 
       body: Form(
         child: ListView(
@@ -157,113 +35,62 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight:  screenHeight,
-              image: 'assets/intro_02.png',
+              image: 'assets/intro_03.png',
               appBarLabel: 'Search',
               imageUrl: widget.currentUserImage,
               pageLogoImage: 'assets/search.svg',
               pageTitle: 'What do you want to List?',
               pageDesc: 'Select the following category',
             ),
-
             Container(
-              height: screenHeight * 0.5,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: <Widget>[
-                  Padding(
-                    padding: EdgeInsets.only(left: 10,right: 10,top: 15),
-                    child: GridView.count(
-                      padding: EdgeInsets.zero,
-                      physics: NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      primary: true,
-                      childAspectRatio: (4 / 4),
-                      crossAxisCount: 3,
-                      mainAxisSpacing: 8,
-                      crossAxisSpacing: 8,
-                      children: <Widget>[
-                        servicesCard('assets/property_search_line.svg', 'Property', onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchPropertyScreen(
-                                userImage: widget.currentUserImage,
-                              ),
-                            ),
-                          );
-                        }),
-                        servicesCard('assets/projects_search_line.svg', 'Projects', onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchProjectsScreen(
-                                userImage: widget.currentUserImage,
-                              ),
-                            ),
-                          );
-                        }),
-                        servicesCard('assets/brokers_search_line.svg', 'Brokers', onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchBrokersScreen(
-                                userImage: widget.currentUserImage,
-                              ),
-                            ),
-                          );
-                        }),
-                        servicesCard('assets/developers_search_line.svg', 'Developers', onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchDeveloperScreen(
-                                userImage: widget.currentUserImage,
-                              ),
-                            ),
-                          );
-                        }),
-                        servicesCard('assets/estate_search_line.svg', 'Estates', onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchEstateScreen(
-                                userImage: widget.currentUserImage,
-                              ),
-                            ),
-                          );
-                        }),
-                        servicesCard('assets/job_search_line.svg', 'Jobs', onTap: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => SearchJobsScreen(
-                                userImage: widget.currentUserImage,
-                              ),
-                            ),
-                          );
-                        }),
-                        // servicesCard('assets/logo.png', 'News', onTap: () {
-                        //   Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //       builder: (context) => SearchNewsScreen(
-                        //         userImage: widget.currentUserImage,
-                        //       ),
-                        //     ),
-                        //   );
-                        // }),
-                      ],
-                    ),
-                  ),
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Padding(
+                        padding: EdgeInsets.only(left: 10,right: 10,top: 15),
+                        child: GridView.count(
+                            padding: EdgeInsets.zero,
+                            physics: NeverScrollableScrollPhysics(),
+                            shrinkWrap: true,
+                            primary: true,
+                            childAspectRatio: (4 / 4),
+                            crossAxisCount: 3,
+                            mainAxisSpacing: 8,
+                            crossAxisSpacing: 8,
+                            children: List.generate(servicesList.length, (index) {
+                              var list = servicesList[index];
+                              return servicesCard(list.image,list.name);
+                            } ))
 
-                  bottomBarTextCopyright()
-                ],
+//              <Widget>[
+//                servicesCard('assets/property_search_line.svg', 'Property', onTap: () {
+////                  Navigator.push(
+////                    context,
+////                    MaterialPageRoute(
+////                      builder: (context) => SearchPropertyScreen(
+////                        userImage: widget.currentUserImage,
+////                      ),
+////                    ),
+////                  );
+//                }),
+//
+//
+//              ],
+                    )
+                  ]
+
+
               ),
+
+              // bottomBarTextCopyright()
+
             ),
-          ],
-        ),
-      ),
-    );
+
+        ]
+
+
+    )
+    ));
   }
 
   propertyWidget(height, width) {
@@ -426,16 +253,30 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
                   image,
                   width:40.0,
                   height: 40.0,
-                  color: colorMain,
+                  color: Colors.black,
                 ),
               ),
             ),
-            Text(
-              name,
-              style: TextStyle(color: colorMain,fontWeight: FontWeight.w600),
+        Container(
+          width: 80,
+          child: Padding(
+            padding: const EdgeInsets.only(top: 5.0),
+            child: Text(
+              "${name}",
+              overflow: TextOverflow.ellipsis,
+              textAlign: TextAlign.center,
+              maxLines: 1,
+              style: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w600,
+                color: Colors.black
+              ),
             ),
+          )
+        ),
+
             SizedBox(
-              height: 5,
+              height: 10,
             ),
           ],
         ),

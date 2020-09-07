@@ -80,8 +80,15 @@ const appIDAndAppKey = "app_id=$appId&app_key=$appkey";
 const defaultUserImage = "assets/default_user.svg";
 
 const String about_us =
-    'Lorem Ipsum is simply dummy text of the printing and typesetting industry standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum';
-
+    'Here at Trucker Hangout, LLC., we have created a social networking platform for all members of the trucking community to come together and connect with fellow drivers or employers at anytime from anywhere. We aim to provide a stage where everyone from the trucking industry can come together and create a community to help one another and have access to the best services possible.';
+const String what_we_do ='We provide you with one of the largest hubs for trucking information, which includes accurate reviews, the best services available in your area, and access to products that are essential for your everyday life on the road.And there is so much more…But that is not all that Trucker Hangout offers. With access to our top of the line job board, you ll never miss an opportunity to find the perfect situation, or the perfect recruit, that suits your lifestyle or business needs. Whether you want to run locally, regionally, or internationally or need a versatile driver, we can help you find your perfect match. Our job board includes the option to search by city, state, job title, freight type, or company so you can always find the right jobs and the right employees relevant to what you are looking for without going through multiple pages of unorganized listings. '
+    'We even practice job matching, where we automatically match you with the best available jobs that fit your skill set '
+    'qualifications, and preferences. The perfect job will find you; we will make sure of it.';
+const String our_goal = 'We cover various aspects of the trucking industry so we can meet your most pressing needs and make life that much easier.'
+    ' We want to provide you with a seamless networking platform where you can communicate with others, '
+    'find the most reliable products and services, share media and other resources, and find great deals '
+    'and offers. Ultimately, we want to save you time and money by placing all the resources that the trucking industry has to offer right '
+    'at your feet.Please feel free to explore the website and take at the different sections to see what we have to offer and how we plan to revolutionize the world of trucking';
 showToast(msg, error) {
   Fluttertoast.showToast(
       msg: msg,
@@ -452,12 +459,17 @@ topBackgroungImage(height) {
 
 backgroundImage() {
   return Positioned.fill(
-    child: Align(
-      alignment: Alignment.bottomCenter,
-      child: Image.asset(
-        "assets/trucker_logo.png",
-      ),
+     child: Align(
+    alignment: Alignment.bottomCenter,
+    child:Container(
+      decoration: BoxDecoration(
+          image: DecorationImage(
+              image: AssetImage('assets/bg_image.png'),
+              colorFilter: new ColorFilter.mode(
+                  Colors.white.withOpacity(0.3), BlendMode.dstIn),
+              fit: BoxFit.fill)),
     ),
+  )
   );
 }
 

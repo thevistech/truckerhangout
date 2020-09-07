@@ -37,7 +37,7 @@ List<SliderModel> getSlides() {
   sliderModel.setDesc(
       "Best job opportunities! Matching the requirements between employees and employers in just a few minutes!");
   sliderModel.setTitle("Job Board");
-  sliderModel.setImageAssetPath("assets/intro_02.png");
+  sliderModel.setImageAssetPath("assets/job_board.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
@@ -46,7 +46,7 @@ List<SliderModel> getSlides() {
   sliderModel.setDesc(
       "Buy, sell, or lease a truck or other equipment fast. Post your product and initiate the process effortlessly.");
   sliderModel.setTitle("Buy Sell & Lease");
-  sliderModel.setImageAssetPath("assets/intro_02.png");
+  sliderModel.setImageAssetPath("assets/buy_sell.png");
   slides.add(sliderModel);
 
   sliderModel = new SliderModel();
@@ -55,7 +55,7 @@ List<SliderModel> getSlides() {
   sliderModel.setDesc(
       "Find best offers at the lowest rates for trucking services. Great offers!");
   sliderModel.setTitle("ELD/GPS Devices");
-  sliderModel.setImageAssetPath("assets/intro_02.png");
+  sliderModel.setImageAssetPath("assets/market_place.png");
   slides.add(sliderModel);
   sliderModel = new SliderModel();
 
@@ -63,7 +63,7 @@ List<SliderModel> getSlides() {
   sliderModel.setDesc(
       "Find the best schools in the industry and get certified from experts. Join a reputed CDL school.");
   sliderModel.setTitle("CDL Schools");
-  sliderModel.setImageAssetPath("assets/intro_02.png");
+  sliderModel.setImageAssetPath("assets/cdl_school.png");
   slides.add(sliderModel);
   sliderModel = new SliderModel();
 
@@ -71,7 +71,7 @@ List<SliderModel> getSlides() {
   sliderModel.setDesc(
       "Get back on the road and browse Repairs and Services to find everything you need wherever you are.");
   sliderModel.setTitle("Repairs and Services");
-  sliderModel.setImageAssetPath("assets/intro_02.png");
+  sliderModel.setImageAssetPath("assets/repair_services.png");
   slides.add(sliderModel);
   sliderModel = new SliderModel();
   return slides;

@@ -52,7 +52,7 @@ class _RoundedImageWidgetState extends State<RoundedImageWidget> {
             width: double.infinity,
             decoration: BoxDecoration(
               image: DecorationImage(
-                fit: BoxFit.cover,
+                fit: BoxFit.fill,
                 image: AssetImage(widget.image),
               ),
             ),
@@ -129,7 +129,7 @@ class _RoundedImageWidgetState extends State<RoundedImageWidget> {
               Divider(color: Colors.white,height: 1,thickness: 2,),
               Column(
                 crossAxisAlignment: CrossAxisAlignment.center,
-                mainAxisAlignment: MainAxisAlignment.end,
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: <Widget>[
                   Padding(
                     padding: const EdgeInsets.only(top:18.0),

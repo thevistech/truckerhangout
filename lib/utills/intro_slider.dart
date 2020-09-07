@@ -259,14 +259,14 @@ class SlideTile extends StatelessWidget {
               Text(
                 title,
                 textAlign: TextAlign.center,
-                style: TextStyle(fontWeight: FontWeight.w600, fontSize: 20,color: colorMain),
+                style: TextStyle(fontWeight: FontWeight.w800, fontSize: 25,color: colorMain),
               ),
               SizedBox(
                 height: 20,
               ),
               Text(desc,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 13,color: Colors.white)),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14,color: Colors.black)),
             ],
           ))
         ],

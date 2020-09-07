@@ -6,6 +6,7 @@ import 'package:flutterapp/ui/signup/sign_up.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:flutterapp/ui/forgot_password.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import '../utills/config.dart';
 import '../stores/sign_in_store.dart';
 import 'dashboard.dart';
 
@@ -51,7 +52,12 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-
+//          decoration: BoxDecoration(
+//              image: DecorationImage(
+//                  image: AssetImage('assets/bg_image.png'),
+//                  colorFilter: new ColorFilter.mode(
+//                      Colors.white.withOpacity(0.3), BlendMode.dstIn),
+//                  fit: BoxFit.fill)),
           child: SizedBox(
             height: height * 15,
             child: Column(
@@ -63,6 +69,7 @@ class _SignInState extends State<SignIn> {
                     children: <Widget>[
                       // Image.asset('assets/cloud.png')
                       // Image.asset('assets/youarealmost.png')
+                     // backgroundImage(),
                     ],
                   ),
                 ),

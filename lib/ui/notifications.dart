@@ -39,7 +39,7 @@ class _NotificationsState extends State<NotificationsUI> {
     return Container(
       child: Stack(
         children: <Widget>[
-          backgroundNotification(),
+          backgroundImage(),
           Observer(
               builder: (_) => widget.notificationStore.isNotificationListLoaded
                   ? notificationsList()
@@ -210,11 +210,15 @@ class _NotificationsState extends State<NotificationsUI> {
     return Positioned.fill(
       child: Align(
         alignment: Alignment.bottomCenter,
-        child: Image.asset(
-          "assets/building.png",
-        ),
+        child:Container(
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('assets/bg_image.png'),
+    colorFilter: new ColorFilter.mode(
+    Colors.white.withOpacity(0.3), BlendMode.dstIn),
+    fit: BoxFit.fill)),
       ),
-    );
+    ));
   }
 
   notificationText(notificationType, userName, companyName) {

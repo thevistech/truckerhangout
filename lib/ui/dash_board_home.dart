@@ -1,4 +1,5 @@
 import 'dart:async';
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
@@ -22,6 +23,8 @@ import 'package:flutterapp/models/services_model.dart';
 
 import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
+import '../utills/UiColors.dart';
+import '../utills/config.dart';
 import '../shimmer/profileListView.dart';
 import 'components/follow_widget.dart';
 import 'components/location_widget.dart';
@@ -163,9 +166,16 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
               itemBuilder: (ctx, i) {
                 if (i == 0) return services();
 
-                if (i == 1)
+                if(i==1)
+                  return createPost(context);
+                if(i == 2)
+                  return Stories(
+                    stories: widget.store.storiesModel,
+                    dashboardStore: widget.store,
+                  );
+                if (i == 3)
                   return PostWidget(
-                      post: widget.store.postModel.data[i - 1],
+                      post: widget.store.postModel.data[i - 3],
                       currentUser: currentUser,
                       baseUrl: widget.store.postModel.url,
                       dashBoardMainStore: widget.store,
@@ -174,14 +184,14 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                       userFullName: userFullName,
                       filterPropertyModel: widget.store.filterPropertyModel);
 
-                if (i == 2)
+                if (i == 4)
                   return LocationWidget(
                     dashboardStore: widget.store,
                     currentUserImage: basicImageUrl,
                   );
-                if (i == 3)
+                if (i == 5)
                   return PostWidget(
-                    post: widget.store.postModel.data[i - 2],
+                    post: widget.store.postModel.data[i - 4],
                     currentUser: currentUser,
                     baseUrl: widget.store.postModel.url,
                     dashBoardMainStore: widget.store,
@@ -189,32 +199,16 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                     userName: userName,
                     userFullName: userFullName,
                   );
-                if (i == 4)
+                if (i == 6)
                   return SliderWidget(
                     dashboardStore: widget.store,
                     callType: DASHBOARD,
                   );
 
-                if (i < 6)
-                  return PostWidget(
-                    post: widget.store.postModel.data[i - 3],
-                    currentUser: currentUser,
-                    baseUrl: widget.store.postModel.url,
-                    dashBoardMainStore: widget.store,
-                    currentUserImageUrl: basicImageUrl,
-                    userName: userName,
-                    userFullName: userFullName,
-                  );
-
-                if (i == 6)
-                  return Stories(
-                    stories: widget.store.storiesModel,
-                    dashboardStore: widget.store,
-                  );
 
                 if (i < 11)
                   return PostWidget(
-                    post: widget.store.postModel.data[i - 4],
+                    post: widget.store.postModel.data[i - 5],
                     currentUser: currentUser,
                     baseUrl: widget.store.postModel.url,
                     dashBoardMainStore: widget.store,
@@ -228,7 +222,7 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                   );
                 }
                 return PostWidget(
-                  post: widget.store.postModel.data[i - 5],
+                  post: widget.store.postModel.data[i - 6],
                   currentUser: currentUser,
                   baseUrl: widget.store.postModel.url,
                   dashBoardMainStore: widget.store,
@@ -237,7 +231,7 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                   userFullName: userFullName,
                 );
               },
-              itemCount: widget.store.postModel.data.length + 5,
+              itemCount: widget.store.postModel.data.length + 6,
               controller: widget.scrollController,
             ),
           )
@@ -276,52 +270,21 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
       crossAxisAlignment: CrossAxisAlignment.start,
       children: <Widget>[
         Container(
-            height: 100,
-            child: ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: servicesList.length,
-                shrinkWrap: true,
-                itemBuilder: (ctx, i) {
-                  var list = servicesList[i];
-                  return Padding(
-                    padding: const EdgeInsets.all(4.0),
-                    child: Column(
+            height: 90,
+            child: Padding(
+              padding: const EdgeInsets.only(top:5.0),
+              child: ListView.builder(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: servicesList.length,
+                  shrinkWrap: true,
+                  itemBuilder: (ctx, i) {
+                    var list = servicesList[i];
+                    return Column(
                       children: <Widget>[
-                     /*   Container(
-                          width: 67.0,
-                          height: 67.0,
 
-                          child: Container(
-                            width: 65,
-                              height: 65,
-                              decoration: BoxDecoration(
-
-                                color:  UiColors.red,
-                                borderRadius: BorderRadius.circular(80.0),
-                              ),
-                              child: Padding(
-                                padding: EdgeInsets.all(13),
-                                child:SvgPicture.asset(
-                                  list.image,
-                                  color: UiColors.white,
-                                ) ,
-                              )),
-                          decoration: BoxDecoration(
-                            border: Border.fromBorderSide(
-                                BorderSide(color:UiColors.white, width: 2.0)),
-                            color:  list.color,
-                            // image: DecowrationImage(image:  , fit: BoxFit.cover),
-                            borderRadius: BorderRadius.circular(80.0),
-//                      border: Border.all(
-//                          color: Colors.deepPurple,
-//                          width: 4.0
-//                      )
-                          ),
-                        ),
-*/
                         Container(
-                          width: 67.0,
-                          height: 67.0,
+                          width: 60.0,
+                          height: 60.0,
                           decoration: new BoxDecoration(
                             color: list.color,
                               shape: BoxShape.circle,
@@ -344,19 +307,140 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                           ),)
 
                         ),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 4.0),
-                          child: Text(
-                            list.name,
-                            style:
-                                TextStyle(color: Colors.black, fontSize: 12.0),
+                        Container(
+                          width: 75,
+                          child: Padding(
+                            padding: const EdgeInsets.only(top: 5.0),
+                            child: Text(
+                              "${list.name}",
+                              overflow: TextOverflow.ellipsis,
+                              textAlign: TextAlign.center,
+                              maxLines: 1,
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
+                            ),
+                          ),
+                        )
+                      ],
+                    );
+                  }),
+            )),
+      ],
+    );
+  }
+  Widget createPost(BuildContext context)
+  {
+    return Padding(
+      padding: const EdgeInsets.only(top:8,bottom: 5),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+
+        children: <Widget>[
+
+          Divider(thickness: 1,color: smokeybgColor,height: 0,),
+          Container(
+            height: 110,
+            width: MediaQuery.of(context).size.width,
+            color:Colors.white,
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: <Widget>[
+                Row(
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: <Widget>[
+                    Padding(
+                      padding: const EdgeInsets.only(left: 12.0),
+                      child:
+                      Container(
+                        width: 40,
+                        height: 40,
+                        decoration:
+                        ShapeDecoration(shape: CircleBorder(), color: Colors.white),
+                        child: ClipRRect(
+                            borderRadius: BorderRadius.circular(50.0),
+                            child: CachedNetworkImage(
+                                fit: BoxFit.cover,
+                                width: 40,
+                                height:40,
+                                imageUrl: widget.currentUserImage,
+                                placeholder: (context, url) =>
+                                new CircularProgressIndicator(
+                                  backgroundColor: colorMain,
+                                ),
+                                errorWidget: (context, url, error) => SvgPicture.asset(
+                                  defaultUserImage,
+                                  height: 40,
+                                  width: 40,
+                                ))),
+                      ),
+                    ),
+                    SizedBox(width: 10,),
+                    Expanded(
+                      child: Padding(
+                        padding: const EdgeInsets.only(right:8.0),
+                        child: Container(
+                          alignment: Alignment.center,
+                          decoration: BoxDecoration(
+                              //color: smokeybgColor,
+                               border: Border.all(color: UiColors.divider, width: 1),
+                              borderRadius: BorderRadius.circular(32.0)),
+                          child: Container(
+                            child: GestureDetector(
+                              child: Container(
+                                alignment: Alignment.centerLeft,
+                                height: 32,
+                                padding: EdgeInsets.only(right: 7.0, left: 10.0),
+                                child: Text(
+                                  "What's on your mind?",
+                                  style:
+                                  TextStyle(color: Colors.grey, fontSize: 12.0),
+                                ),
+                              ),
+                              onTap: () {
+
+                              },
+                              // onTap: _showAddCommentModal,
+                            ),
                           ),
                         ),
-                      ],
+                      ),
                     ),
-                  );
-                })),
-      ],
+                   // Text("What's on your mind?" , style: TextStyle(color: Colors.black54,fontSize: 12),)
+                  ],
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Divider(height: 1, thickness: 1,),
+                ),
+                Padding(
+                  padding: const EdgeInsets.all(12.0),
+                  child: Row(
+                    children: <Widget>[
+                      Icon(Icons.photo,),
+                      SizedBox(width: 2,),
+                      Text('Photo/Video' , style: TextStyle(fontSize: 12.0),),
+                      Spacer(),
+                      Icon(Icons.camera_alt),
+                      SizedBox(width: 2,),
+                      Text('Camera' , style: TextStyle(fontSize: 12.0),),
+                      Spacer(),
+                      Icon(Icons.poll),
+                      SizedBox(width: 2,),
+                      Text('Poll' , style: TextStyle(fontSize: 12.0),),
+                      Spacer(),
+                      Icon(Icons.business_center),
+                      SizedBox(width: 2,),
+                      Text('Job' , style: TextStyle(fontSize: 12.0),)
+                    ],
+                  ),
+                )
+              ],
+            ),
+          ),
+        ],
+      ),
     );
   }
 

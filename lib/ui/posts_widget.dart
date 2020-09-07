@@ -16,6 +16,8 @@ import 'dialogs/more_dialog.dart';
 import 'components/start_rating_widget.dart';
 import 'package:timeago/timeago.dart' as timeago;
 
+import 'homePost/home_comments_screen.dart';
+
 class PostWidget extends StatefulWidget {
   final Datum post;
   final String imgUrl;
@@ -128,7 +130,7 @@ class _PostWidgetState extends State<PostWidget> {
                 padding: EdgeInsets.symmetric(horizontal: 5.0, vertical: 2.0),
                 decoration: BoxDecoration(
                     border: Border.all(
-                      color: colorMain,
+                      color: Colors.black,
                     ),
                     borderRadius: BorderRadius.circular(3.0)),
                 child: Text(
@@ -240,7 +242,8 @@ class _PostWidgetState extends State<PostWidget> {
                     child: Container(
                       alignment: Alignment.center,
                       decoration: BoxDecoration(
-                          border: Border.all(color: colorMain, width: 1),
+                          color: smokeybgColor,
+                          // border: Border.all(color: colorMain, width: 1),
                           borderRadius: BorderRadius.circular(32.0)),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.start,
@@ -250,7 +253,7 @@ class _PostWidgetState extends State<PostWidget> {
                             height: 28,
                             child: ClipRRect(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(32.0)),
+                                BorderRadius.all(Radius.circular(32.0)),
                                 child: CachedNetworkImage(
                                     imageUrl: widget.currentUserImageUrl)),
                           ),
@@ -259,23 +262,22 @@ class _PostWidgetState extends State<PostWidget> {
                               child: Container(
                                 alignment: Alignment.centerLeft,
                                 height: 28,
-                                padding:
-                                    EdgeInsets.only(right: 7.0, left: 10.0),
+                                padding: EdgeInsets.only(right: 7.0, left: 10.0),
                                 child: Text(
                                   'Write a comment',
-                                  style: TextStyle(
-                                      color: Colors.grey, fontSize: 12.0),
+                                  style:
+                                  TextStyle(color: Colors.grey, fontSize: 12.0),
                                 ),
                               ),
                               onTap: () {
-                                // Navigator.push(context,
-                                //     MaterialPageRoute(builder: (context) {
-                                //   return CommentsAndLikeScreen(
-                                //     isCommentDetail: true,
-                                //     postComments: widget.post,
-                                //     imgUrl: widget.baseUrl,
-                                //   );
-                                // }));
+//                                Navigator.push(context,
+//                                    MaterialPageRoute(builder: (context) {
+//                                      return CommentsAndLikeScreen(
+//                                        isCommentDetail: true,
+//                                        postComments: widget.post,
+//                                        imgUrl: widget.baseUrl,
+//                                      );
+//                                    }));
                               },
                               // onTap: _showAddCommentModal,
                             ),
@@ -309,7 +311,6 @@ class _PostWidgetState extends State<PostWidget> {
                   'assets/property_details_line.svg',
                   height: 28,
                   width: 28,
-                  color: colorMain,
                 ),
               ),
             ),
@@ -325,13 +326,11 @@ class _PostWidgetState extends State<PostWidget> {
                           'assets/save_filled.svg',
                           height: 28,
                           width: 28,
-                          color: colorMain,
                         )
                       : SvgPicture.asset(
                           'assets/save.svg',
                           height: 28,
                           width: 28,
-                          color: colorMain,
                         ),
                 ),
               ),

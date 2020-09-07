@@ -13,7 +13,12 @@ class SignInOrSignUp extends StatelessWidget {
 
     return Scaffold(
         body: Container(
-
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/bg_image.png'),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.white.withOpacity(0.3), BlendMode.dstOver),
+                  fit: BoxFit.fill)),
       child: SizedBox(
         height: height * 15,
         child: Column(

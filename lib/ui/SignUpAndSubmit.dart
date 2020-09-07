@@ -30,109 +30,113 @@ class _SignUpAndSubmitState extends State<SignUpAndSubmit> {
     return Scaffold(
       // resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
-        child: SizedBox(
+          child: Container(
           height: height * 15,
-          child: Column(
-            // mainAxisAlignment: MainAxisAlignment.center,
-            children: <Widget>[
-              Expanded(
-                flex: 3,
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: <Widget>[
-                        Icon(Icons.insert_drive_file),
-                        SizedBox(
-                          width: 5,
-                        ),
-                        Text(
-                          'SIGN UP & SUBMIT',
-                          style: TextStyle(
-                              fontSize: headingFontSize,
-                              fontWeight: FontWeight.bold),
-                        ),
-                        // Image.asset('assets/signupandsubmit.png')
-                      ],
-                    ),
-                    SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      'You Are Almost There',
-                      style: TextStyle(
-                        fontSize: subHeadingFontSize,
-                      ),
-                    ),
-                    // Image.asset('assets/youarealmost.png')
-                  ],
-                ),
-              ),
-              Expanded(
-                  flex: 5,
+          child: Container(
+
+
+            child: Column(
+              // mainAxisAlignment: MainAxisAlignment.center,
+              children: <Widget>[
+                Expanded(
+                  flex: 3,
                   child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
-                      addressWidget(height, width),
-                      SizedBox(
-                        height: 15,
-                      ),
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Expanded(
-                              //  flex : 1,
-                              child: countryCodePickerWidget(height, width)),
-                          Expanded(
-                            // flex : 2,
-                            child: city(height, width),
+                          Icon(Icons.insert_drive_file),
+                          SizedBox(
+                            width: 5,
                           ),
+                          Text(
+                            'SIGN UP & SUBMIT',
+                            style: TextStyle(
+                                fontSize: headingFontSize,
+                                fontWeight: FontWeight.bold),
+                          ),
+                          // Image.asset('assets/signupandsubmit.png')
                         ],
                       ),
-                      Column(
-                        children: <Widget>[
-                          SizedBox(
-                            height: 15,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                  //  flex : 1,
-                                  child: location(height, width)),
-                              Expanded(
-                                // flex : 2,
-                                child: postalCode(height, width),
-                              ),
-                            ],
-                          ),
-                          SizedBox(
-                            height: 30,
-                          ),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: <Widget>[
-                              checkBox(),
-                              Text('I accept all terms and conditions')
-                            ],
-                          ),
-                          SizedBox(
-                            height: 25,
-                          ),
-                          Row(
-                            children: <Widget>[
-                              Expanded(
-                                  //  flex : 1,
-                                  child: previousButtonWidget(height, width)),
-                              Expanded(
-                                  // flex : 2,
-                                  child: nextButtonWidget(height, width)),
-                            ],
-                          ),
-                        ],
+                      SizedBox(
+                        height: 5,
                       ),
-                      Expanded(flex: 2, child: bottomBarTextCopyright()),
+                      Text(
+                        'You Are Almost There',
+                        style: TextStyle(
+                          fontSize: subHeadingFontSize,
+                        ),
+                      ),
+                      // Image.asset('assets/youarealmost.png')
                     ],
-                  ))
-            ],
+                  ),
+                ),
+                Expanded(
+                    flex: 5,
+                    child: Column(
+                      children: <Widget>[
+                        addressWidget(height, width),
+                        SizedBox(
+                          height: 15,
+                        ),
+                        Row(
+                          children: <Widget>[
+                            Expanded(
+                                //  flex : 1,
+                                child: countryCodePickerWidget(height, width)),
+                            Expanded(
+                              // flex : 2,
+                              child: city(height, width),
+                            ),
+                          ],
+                        ),
+                        Column(
+                          children: <Widget>[
+                            SizedBox(
+                              height: 15,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                    //  flex : 1,
+                                    child: location(height, width)),
+                                Expanded(
+                                  // flex : 2,
+                                  child: postalCode(height, width),
+                                ),
+                              ],
+                            ),
+                            SizedBox(
+                              height: 30,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: <Widget>[
+                                checkBox(),
+                                Text('I accept all terms and conditions')
+                              ],
+                            ),
+                            SizedBox(
+                              height: 25,
+                            ),
+                            Row(
+                              children: <Widget>[
+                                Expanded(
+                                    //  flex : 1,
+                                    child: previousButtonWidget(height, width)),
+                                Expanded(
+                                    // flex : 2,
+                                    child: nextButtonWidget(height, width)),
+                              ],
+                            ),
+                          ],
+                        ),
+                        Expanded(flex: 2, child: bottomBarTextCopyright()),
+                      ],
+                    ))
+              ],
+            ),
           ),
         ),
       ),

@@ -24,7 +24,7 @@ class _CommentWidgetState extends State<CommentWidget> {
     var textSpans = <TextSpan>[
       TextSpan(
           text: '${widget.comment.userDisplayName} ',
-          style: TextStyle(color: colorMain, fontWeight: FontWeight.bold)),
+          style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold)),
     ];
     this.widget.comment.text.split(' ').forEach((word) {
       if (word.startsWith('#') && word.length > 1) {
