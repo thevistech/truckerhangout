@@ -3,14 +3,14 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
 import 'package:flutterapp/utills/config.dart';
 
-class SearchNewsScreen extends StatefulWidget {
-  SearchNewsScreen({this.userImage});
+class SearchMarketPlaceScreen extends StatefulWidget {
+  SearchMarketPlaceScreen({this.userImage});
   final userImage;
   @override
-  _SearchNewsScreenState createState() => _SearchNewsScreenState();
+  _SearchMarketPlaceScreenState createState() => _SearchMarketPlaceScreenState();
 }
 
-class _SearchNewsScreenState extends State<SearchNewsScreen> {
+class _SearchMarketPlaceScreenState extends State<SearchMarketPlaceScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,17 +22,17 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
-              appBarLabel: 'Search News',
+              image: 'assets/bg1.png',
+              appBarLabel: 'Search MarketPlace',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/logo.png',
-              pageTitle: 'Search News',
-              pageDesc: 'Find News of your interest',
+              pageLogoImage: 'assets/markerplace_service.svg',
+              pageTitle: 'Search MarketPlace',
+              pageDesc: 'Search New or Used Parts and Tires effortlessly! ',
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: screenHeight * 0.11, right: 15, left: 15),
-              child: newsWidget(screenHeight / 15, screenWidth),
+              child: developerWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.02),
             Padding(
@@ -40,7 +40,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
               child: locationWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.03),
-            widgetSearchNewsButton(screenHeight / 15, screenWidth),
+            widgetSearchDeveloperButton(screenHeight / 15, screenWidth),
             SizedBox(height: screenWidth * 0.23),
             bottomBarTextCopyright()
           ],
@@ -49,7 +49,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
     );
   }
 
-  widgetSearchNewsButton(heightButton, width) {
+  widgetSearchDeveloperButton(heightButton, width) {
     return Observer(
       builder: (_) => Container(
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -76,7 +76,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Search News',
+                  'Search Marketplace',
                   style: TextStyle(
                       fontSize: buttonFontSize, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -107,7 +107,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
     );
   }
 
-  newsWidget(height, width) {
+  developerWidget(height, width) {
     return Container(
       height: height40,
       width: width,
@@ -120,7 +120,7 @@ class _SearchNewsScreenState extends State<SearchNewsScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Job Title, Keywords, company',
+          hintText: 'Keywords',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),

@@ -3,14 +3,14 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
 import 'package:flutterapp/utills/config.dart';
 
-class SearchEstateScreen extends StatefulWidget {
-  SearchEstateScreen({this.userImage});
+class SearchEldGpsScreen extends StatefulWidget {
+  SearchEldGpsScreen({this.userImage});
   final userImage;
   @override
-  _SearchEstateScreenState createState() => _SearchEstateScreenState();
+  _SearchEldGpsScreenState createState() => _SearchEldGpsScreenState();
 }
 
-class _SearchEstateScreenState extends State<SearchEstateScreen> {
+class _SearchEldGpsScreenState extends State<SearchEldGpsScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,17 +22,17 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
-              appBarLabel: 'Search Estates',
+              image: 'assets/bg1.png',
+              appBarLabel: 'Search ELD/GPS Devices',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/estate_search_line.svg',
-              pageTitle: 'Search Estates',
-              pageDesc: 'Find Estates near your location',
+              pageLogoImage: 'assets/eld_service.svg',
+              pageTitle: 'Search ELD/GPS Devices',
+              pageDesc: 'Find Right ELD & GPS Service Provider',
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: screenHeight * 0.11, right: 15, left: 15),
-              child: estatesWidget(screenHeight / 15, screenWidth),
+              child: projectsWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.02),
             Padding(
@@ -40,7 +40,7 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
               child: locationWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.03),
-            widgetSearchEstatesButton(screenHeight / 15, screenWidth),
+            widgetSearchProjectsButton(screenHeight / 15, screenWidth),
             SizedBox(height: screenWidth * 0.23),
             bottomBarTextCopyright()
           ],
@@ -49,7 +49,7 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
     );
   }
 
-  widgetSearchEstatesButton(heightButton, width) {
+  widgetSearchProjectsButton(heightButton, width) {
     return Observer(
       builder: (_) => Container(
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -76,7 +76,7 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Search Estates',
+                  'Search ELD/GPS Devices',
                   style: TextStyle(
                       fontSize: buttonFontSize, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -107,7 +107,7 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
     );
   }
 
-  estatesWidget(height, width) {
+  projectsWidget(height, width) {
     return Container(
       height: height40,
       width: width,
@@ -120,7 +120,7 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Job Title, Keywords, company',
+          hintText: 'Keywords',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),
@@ -159,7 +159,7 @@ class _SearchEstateScreenState extends State<SearchEstateScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Location, city, province, country',
+          hintText: 'city,State or ZIP',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),

@@ -23,10 +23,10 @@ class _ChangeSettingsScreenState extends State<ChangeSettingsScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
+              image: 'assets/bg1.png',
               appBarLabel: 'Change Setting',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/logo.png',
+              pageLogoImage: 'assets/ic_drawer_setting.svg',
               pageTitle: 'Change Setting',
               pageDesc: 'Change your password and profile settings',
             ),

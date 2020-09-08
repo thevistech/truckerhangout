@@ -3,14 +3,14 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
 import 'package:flutterapp/utills/config.dart';
 
-class SearchDeveloperScreen extends StatefulWidget {
-  SearchDeveloperScreen({this.userImage});
+class SearchInsuranceScreen extends StatefulWidget {
+  SearchInsuranceScreen({this.userImage});
   final userImage;
   @override
-  _SearchDeveloperScreenState createState() => _SearchDeveloperScreenState();
+  _SearchInsuranceScreenState createState() => _SearchInsuranceScreenState();
 }
 
-class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
+class _SearchInsuranceScreenState extends State<SearchInsuranceScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,17 +22,17 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
-              appBarLabel: 'Search Developer',
+              image: 'assets/bg1.png',
+              appBarLabel: 'Truck Insurance',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/developers_search_line.svg',
-              pageTitle: 'Search Developer',
-              pageDesc: 'Find Developers near your location',
+              pageLogoImage: 'assets/insurance_service.svg',
+              pageTitle: 'Search Truck Insurance',
+              pageDesc: 'Let us help you find the right commercial truck insurance to fit your needs.',
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: screenHeight * 0.11, right: 15, left: 15),
-              child: developerWidget(screenHeight / 15, screenWidth),
+              child: projectsWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.02),
             Padding(
@@ -40,7 +40,7 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
               child: locationWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.03),
-            widgetSearchDeveloperButton(screenHeight / 15, screenWidth),
+            widgetSearchProjectsButton(screenHeight / 15, screenWidth),
             SizedBox(height: screenWidth * 0.23),
             bottomBarTextCopyright()
           ],
@@ -49,7 +49,7 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
     );
   }
 
-  widgetSearchDeveloperButton(heightButton, width) {
+  widgetSearchProjectsButton(heightButton, width) {
     return Observer(
       builder: (_) => Container(
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -76,7 +76,7 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Search Developers',
+                  'Search Truck Insurance',
                   style: TextStyle(
                       fontSize: buttonFontSize, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -107,7 +107,7 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
     );
   }
 
-  developerWidget(height, width) {
+  projectsWidget(height, width) {
     return Container(
       height: height40,
       width: width,
@@ -120,7 +120,7 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Job Title, Keywords, company',
+          hintText: 'Keywords',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),
@@ -159,7 +159,7 @@ class _SearchDeveloperScreenState extends State<SearchDeveloperScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Location, city, province, country',
+          hintText: 'city,State or ZIP',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),

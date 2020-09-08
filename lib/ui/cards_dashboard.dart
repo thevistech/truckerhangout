@@ -35,7 +35,7 @@ import 'maps.dart';
 import 'mybusiness/my_business_screen.dart';
 import 'myleads/my_leads_main_screen.dart';
 import 'newsInfo/news_and_info.dart';
-import 'notifications.dart';
+import 'notifications/notifications.dart';
 
 class CardDasboard extends StatefulWidget {
   final drawerItems = [
@@ -141,16 +141,14 @@ class _CardsDasboardState extends State<CardDasboard> {
               contentPadding:
                   EdgeInsets.symmetric(vertical: 0.0, horizontal: 16.0),
               dense: true,
-              //hhhhhhhhhhhhhhhhhhhh contentPadding: EdgeInsets.all(0.0),
               title: Text(
                 '${d.title}',
                 style:
-                    TextStyle(color: i != _index ? Colors.black : Colors.black),
+                    TextStyle(color: i != _index ? Colors.black : Colors.black,fontSize: 12),
               ),
               selected: i == _index,
               leading: SvgPicture.asset(
                 d.iconData,
-                color: colorMain,
               ),
               onTap: () {
                 Navigator.of(context).pop();
@@ -179,18 +177,8 @@ class _CardsDasboardState extends State<CardDasboard> {
     ));
 
     return Scaffold(
-      //key: _scaffoldKey,
       appBar: MyCustomAppBarRight(height: 60, store: dashBoardMainStore),
       body: _bottomTabFragments(_selectedDrawerIndex),
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: Observer(
-        builder: (_) => !dashBoardMainStore.isMapVisible
-            ? floatingActionButton()
-            : Container(
-                height: 0,
-                width: 0,
-              ),
-      ),
       drawer: Drawer(
           child: ListView(
         // Important: Remove any padding from the ListView.
@@ -250,14 +238,6 @@ class _CardsDasboardState extends State<CardDasboard> {
           ],
         ).toList(),
       )),
-      bottomNavigationBar: Observer(
-        builder: (_) => !dashBoardMainStore.isMapVisible
-            ? bottomNavigationBar()
-            : Container(
-                height: 0,
-                width: 0,
-              ),
-      ),
     );
   }
 
@@ -306,7 +286,7 @@ class _CardsDasboardState extends State<CardDasboard> {
         dashBoardMainStore.filterProperty = mainDashBoardMenu.none;
         dashBoardMainStore.homeTypeParentID = '';
         return new NotificationsUI(
-          notificationStore: notificationStore,
+         // notificationStore: notificationStore,
         );
 
       case 3:

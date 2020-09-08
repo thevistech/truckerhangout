@@ -1,19 +1,16 @@
-import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_svg/svg.dart';
-import 'package:flutterapp/ui/chats/chat.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
 import 'package:flutterapp/utills/config.dart';
 
-class SearchBrokersScreen extends StatefulWidget {
-  SearchBrokersScreen({this.userImage});
+class SearchCompanyReviews extends StatefulWidget {
+  SearchCompanyReviews({this.userImage});
   final userImage;
   @override
-  _SearchBrokersScreenState createState() => _SearchBrokersScreenState();
+  _SearchCompanyReviewsState createState() => _SearchCompanyReviewsState();
 }
 
-class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
+class _SearchCompanyReviewsState extends State<SearchCompanyReviews> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -25,25 +22,25 @@ class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
-              appBarLabel: 'Search Brokers',
+              image: 'assets/bg1.png',
+              appBarLabel: 'Company Reviews',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/brokers_search_line.svg',
-              pageTitle: 'Search Brokers',
-              pageDesc: 'Find Brokers near your location',
+              pageLogoImage: 'assets/company_service.svg',
+              pageTitle: 'Search Company Reviews',
+              pageDesc: 'Find Reviews By Truck Driver,For Truck Driver',
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: screenHeight * 0.11, right: 15, left: 15),
-              child: brokerWidget(screenHeight / 15, screenWidth),
+              child: newsWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.02),
             Padding(
               padding: EdgeInsets.only(right: 15, left: 15),
-              child: brokerWidget(screenHeight / 15, screenWidth),
+              child: locationWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.03),
-            widgetSearchBrokersButton(screenHeight / 15, screenWidth),
+            widgetSearchNewsButton(screenHeight / 15, screenWidth),
             SizedBox(height: screenWidth * 0.23),
             bottomBarTextCopyright()
           ],
@@ -52,7 +49,7 @@ class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
     );
   }
 
-  widgetSearchBrokersButton(heightButton, width) {
+  widgetSearchNewsButton(heightButton, width) {
     return Observer(
       builder: (_) => Container(
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -79,7 +76,7 @@ class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Search Brokers',
+                  'Search Company Reviews',
                   style: TextStyle(
                       fontSize: buttonFontSize, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -110,27 +107,7 @@ class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
     );
   }
 
-  SizedBox widgeSearchProjectButton(double width) {
-    return SizedBox(
-      width: width * 0.92,
-      child: OutlineButton(
-        padding: EdgeInsets.zero,
-        onPressed: () {},
-        borderSide: BorderSide(color: Colors.white, width: 1),
-        shape: RoundedRectangleBorder(
-          side: BorderSide(width: width * 0.9),
-          borderRadius: new BorderRadius.circular(30.0),
-        ),
-        child: Text('Search brokers',
-            style: TextStyle(
-                color: Colors.white,
-                fontSize: 15,
-                fontWeight: FontWeight.w600)),
-      ),
-    );
-  }
-
-  brokerWidget(height, width) {
+  newsWidget(height, width) {
     return Container(
       height: height40,
       width: width,
@@ -143,7 +120,7 @@ class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Job Title, Keywords, company',
+          hintText: 'Keywords, company',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),
@@ -182,7 +159,7 @@ class _SearchBrokersScreenState extends State<SearchBrokersScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Loccation, city, province, country',
+          hintText: 'Location, city, province, country',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),

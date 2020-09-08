@@ -3,14 +3,14 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
 import 'package:flutterapp/utills/config.dart';
 
-class SearchProjectsScreen extends StatefulWidget {
-  SearchProjectsScreen({this.userImage});
+class SearchBuyLeaseScreen extends StatefulWidget {
+  SearchBuyLeaseScreen({this.userImage});
   final userImage;
   @override
-  _SearchProjectsScreenState createState() => _SearchProjectsScreenState();
+  _SearchBuyLeaseScreenState createState() => _SearchBuyLeaseScreenState();
 }
 
-class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
+class _SearchBuyLeaseScreenState extends State<SearchBuyLeaseScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,17 +22,17 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
-              appBarLabel: 'Search Projects',
+              image: 'assets/bg1.png',
+              appBarLabel: 'Search Buy & Lease',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/projects_search_line.svg',
-              pageTitle: 'Search Projects',
-              pageDesc: 'Find Projects of your interest',
+              pageLogoImage: 'assets/sell_lease.svg',
+              pageTitle: 'Search Buy & Lease',
+              pageDesc: 'Buy, sell, or lease a truck or other equipment fast',
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: screenHeight * 0.11, right: 15, left: 15),
-              child: projectsWidget(screenHeight / 15, screenWidth),
+              child: propertyWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.02),
             Padding(
@@ -40,7 +40,7 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
               child: locationWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.03),
-            widgetSearchProjectsButton(screenHeight / 15, screenWidth),
+            widgetSearchPropertyButton(screenHeight / 15, screenWidth),
             SizedBox(height: screenWidth * 0.23),
             bottomBarTextCopyright()
           ],
@@ -49,7 +49,7 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
     );
   }
 
-  widgetSearchProjectsButton(heightButton, width) {
+  widgetSearchPropertyButton(heightButton, width) {
     return Observer(
       builder: (_) => Container(
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -76,7 +76,7 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Search Projects',
+                  'Search Buy & Lease',
                   style: TextStyle(
                       fontSize: buttonFontSize, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -106,8 +106,7 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
       ),
     );
   }
-
-  projectsWidget(height, width) {
+  propertyWidget(height, width) {
     return Container(
       height: height40,
       width: width,
@@ -120,7 +119,7 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Job Title, Keywords, company',
+          hintText: 'Title, Keywords, company',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),
@@ -145,7 +144,6 @@ class _SearchProjectsScreenState extends State<SearchProjectsScreen> {
       ),
     );
   }
-
   locationWidget(height, width) {
     return Container(
       height: height40,

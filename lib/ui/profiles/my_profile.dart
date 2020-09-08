@@ -37,7 +37,8 @@ class _MyProfileState extends State<MyProfile> {
                 SizedBox(
                   height: 20,
                 ),
-                _followersFollowings(),
+               // _followersFollowings(),
+                _greyCircles(),
                 personalInfo(),
                // showPostData(),
 

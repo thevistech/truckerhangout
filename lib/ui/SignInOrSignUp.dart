@@ -17,7 +17,7 @@ class SignInOrSignUp extends StatelessWidget {
               image: DecorationImage(
                   image: AssetImage('assets/bg_image.png'),
                   colorFilter: new ColorFilter.mode(
-                      Colors.white.withOpacity(0.3), BlendMode.dstOver),
+                      Colors.white.withOpacity(0.3), BlendMode.dstIn),
                   fit: BoxFit.fill)),
       child: SizedBox(
         height: height * 15,

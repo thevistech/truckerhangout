@@ -40,10 +40,10 @@ class _VerificationCodeState extends State<VerificationCode> {
         child: Container(
           decoration: BoxDecoration(
               image: DecorationImage(
-                  image: AssetImage('assets/bgimg.png'),
-                  colorFilter: new ColorFilter.mode(Colors.white.withOpacity(0.5), BlendMode.dstIn),
-                  fit: BoxFit.fill
-                 )),
+                  image: AssetImage('assets/bg_image.png'),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.white.withOpacity(0.3), BlendMode.dstIn),
+                  fit: BoxFit.fill)),
           child: SizedBox(
             height: height * 15,
             child: Column(

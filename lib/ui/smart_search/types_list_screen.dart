@@ -2,15 +2,18 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapp/ui/chats/chat.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
-import 'package:flutterapp/ui/smart_search/search_broker_screen.dart';
-import 'package:flutterapp/ui/smart_search/search_developer_sreen.dart';
-import 'package:flutterapp/ui/smart_search/search_estates_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_cdl_schools_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_marketplace_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_questation_answer_screen.dart';
 import 'package:flutterapp/ui/smart_search/search_job_screen.dart';
-import 'package:flutterapp/ui/smart_search/search_news_screen.dart';
-import 'package:flutterapp/ui/smart_search/search_project_screen.dart';
-import 'package:flutterapp/ui/smart_search/search_property_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_finance_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_eldgps_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_buy_lease_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_insurance_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_company_review.dart';
+import 'package:flutterapp/ui/smart_search/search_repair_services_screen.dart';
+
 import 'package:flutterapp/utills/config.dart';
 import 'package:flutterapp/models/services_model.dart';
 import 'package:flutterapp/models/services_model.dart';
@@ -35,11 +38,11 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight:  screenHeight,
-              image: 'assets/intro_03.png',
+              image: 'assets/bg1.png',
               appBarLabel: 'Search',
               imageUrl: widget.currentUserImage,
               pageLogoImage: 'assets/search.svg',
-              pageTitle: 'What do you want to List?',
+              pageTitle: 'What do you want to Search?',
               pageDesc: 'Select the following category',
             ),
             Container(
@@ -55,11 +58,13 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
                             primary: true,
                             childAspectRatio: (4 / 4),
                             crossAxisCount: 3,
-                            mainAxisSpacing: 8,
-                            crossAxisSpacing: 8,
+                            mainAxisSpacing: 4,
+                            crossAxisSpacing: 4,
                             children: List.generate(servicesList.length, (index) {
                               var list = servicesList[index];
-                              return servicesCard(list.image,list.name);
+                              return servicesCard(list.image,list.name,index,onTap: (){
+                                searchRoutes(index);
+                              });
                             } ))
 
 //              <Widget>[
@@ -85,12 +90,118 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
               // bottomBarTextCopyright()
 
             ),
-
         ]
 
 
     )
     ));
+  }
+
+  searchRoutes(int index){
+    switch(index){
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchJobsScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 1:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchBuyLeaseScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 2:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchMarketPlaceScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchEldGpsScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 4:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchFinanceScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 5:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchQuestionAnswerScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 6:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchCdlSchoolsScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+      case 7:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchInsuranceScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+
+      case 8:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchCompanyReviews(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+
+      case 9:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => SearchReapirAndServicesScreen(
+              userImage: imgUrl,
+            ),
+          ),
+        );
+        break;
+    }
   }
 
   propertyWidget(height, width) {
@@ -228,7 +339,7 @@ class _ListTypesScreenState extends State<SmartSearchCategory> {
     );
   }
 
-  Card servicesCard(String image, String name, {Function onTap}) {
+  Card servicesCard(String image, String name, int index,{Function onTap}) {
     return Card(
       color: smokeybgColor,
       elevation: 2,

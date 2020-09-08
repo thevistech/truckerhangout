@@ -84,8 +84,10 @@ class _ChangePasswordScreenState extends State<ChangePasswordScreen> {
                           flex: 8,
                           child: Padding(
                             padding: const EdgeInsets.symmetric(vertical: 15),
-                            child: Image.asset(
-                              'assets/logo.png',
+                            child: SvgPicture.asset('assets/passward.svg',
+                            color: Colors.white,
+                              height:100 ,
+                              width: 100,
                             ),
                           ),
                         ),

@@ -3,11 +3,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:flutterapp/ui/chats/chat.dart';
 import 'package:flutterapp/utills/config.dart';
-import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 
 class InviteScreen extends StatefulWidget {
-  final userImage;
   InviteScreen({this.userImage});
+  final userImage;
   @override
   _InviteScreenState createState() => _InviteScreenState();
 }
@@ -15,133 +14,140 @@ class InviteScreen extends StatefulWidget {
 class _InviteScreenState extends State<InviteScreen> {
   @override
   Widget build(BuildContext context) {
+    double screenWidth = MediaQuery.of(context).size.width;
+    double screenHeight = MediaQuery.of(context).size.height;
     return Scaffold(
-      backgroundColor: colorMain,
       appBar: AppBar(
-        titleSpacing: 0.0,
-        leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
-          onPressed: () => Navigator.of(context).pop(),
-        ),
-        actions: actionWidgets(context),
+        bottomOpacity: 0.0,
         backgroundColor: colorMain,
-        title: Text(
-          'Invite',
-          style: TextStyle(
-              color: Colors.white,
-              fontSize: 16.0,
-              fontWeight: FontWeight.normal),
-        ),
+        titleSpacing: 0.0,
+        title: Text('Invite Friends'),
+        elevation: 0.0,
+        actions: <Widget>[
+          InkWell(
+            onTap: () {
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return Chat();
+              }));
+            },
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 8.0),
+              child: SvgPicture.asset(
+                "assets/message.svg",
+                allowDrawingOutsideViewBox: true,
+                height: 35,
+                color: Colors.white,
+              ),
+            ),
+          ),
+          CircleAvatar(
+            radius: 28,
+            backgroundColor: Colors.transparent,
+            // radius: 45.0,
+            child: ClipOval(
+              child: CachedNetworkImage(
+                fit: BoxFit.cover,
+                height: 34,
+                width: 34,
+                imageUrl: "${widget.userImage}",
+              ),
+            ),
+          ),
+        ],
       ),
       body: Column(
-        crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.center,
+        crossAxisAlignment: CrossAxisAlignment.center,
         children: <Widget>[
+
           Expanded(
-              flex: 10,
-              child: Padding(
-                padding:
-                    const EdgeInsets.symmetric(horizontal: 12.0, vertical: 12),
-                child: Image.asset('assets/logo.png'),
-              )),
-          Expanded(
-            flex: 2,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                'Invite Your Friends......',
-                style: TextStyle(color: Colors.white, fontSize: 22),
-              ),
-            ),
-          ),
-          Expanded(
-            flex: 5,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 15),
-              child: Text(
-                'There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form, by injected humour, or randomised words which don\'t look even slightly believable. If you are going to use a passage of Lorem Ipsum, you need to be sure there isn\'t anything embarrassing hidden in the middle of text. All the Lorem Ipsum generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator on the Internet. It uses a dictionary of over 200 Latin words, combined with a handful of model sentence structures, to generate Lorem Ipsum which looks reasonable. The generated Lorem Ipsum is therefore always free from repetition, injected humour, or non-characteristic words etc',
-                style: TextStyle(color: Colors.white),
-                textAlign: TextAlign.justify,
-                maxLines: 7,
-              ),
-            ),
-          ),
-          Expanded(
-              flex: 4,
-              child: Row(
+            flex: 8,
+            // child: Placeholder(),
+            child: Container(
+              child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: <Widget>[
-                  OutlineButton(
-                    onPressed: () {},
-                    color: Colors.white,
-                    borderSide: BorderSide(color: Colors.white, width: 1.5),
-                    shape: CircleBorder(),
-                    child: Icon(
-                      FontAwesomeIcons.facebookF,
-                      color: Colors.blueAccent,
+                  Image.asset(
+                    'assets/trucker_hagout_icon.png',
+                    fit: BoxFit.cover,
+                    height: screenHeight * 0.25,
+                  ),
+                  Text(
+                    'Trucker Hangout',
+                    style: TextStyle(
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
                     ),
                   ),
-                  OutlineButton(
-                    onPressed: () {},
-                    color: Colors.white,
-                    borderSide: BorderSide(color: Colors.white, width: 1.5),
-                    shape: CircleBorder(),
-                    child: Icon(
-                      FontAwesomeIcons.apple,
-                      color: Colors.blueGrey,
-                    ),
+                  Text(
+                    'A Community On The Road',
+                    style: TextStyle(fontSize: 10, fontWeight: FontWeight.w500),
+                  )
+                ],
+              ),
+            ),
+          ),
+          Expanded(
+            flex: 4,
+            child: Container(
+              child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: <Widget>[
+                  Text(
+                    'Get free boosters for every friend sign up. Share your referral code with your friends',
+                    textAlign: TextAlign.center,
                   ),
-                  OutlineButton(
-                    padding: EdgeInsets.zero,
-                    onPressed: () {},
-                    color: Colors.white,
-                    borderSide: BorderSide(color: Colors.white, width: 1.5),
-                    shape: CircleBorder(),
-                    child: Icon(
-                      FontAwesomeIcons.google,
-                      color: Colors.red,
+                  Padding(
+                    padding: const EdgeInsets.all(15.0),
+                    child: Container(
+                      decoration: ShapeDecoration(
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(7),
+                            side: BorderSide(color: colorMain)),
+                      ),
+                      child: Padding(
+                        padding: const EdgeInsets.symmetric(
+                            vertical: 8.0, horizontal: 30),
+                        child: Text(
+                          'CC-4423',
+                          textAlign: TextAlign.center,
+                        ),
+                      ),
                     ),
                   ),
                 ],
-              )),
-          Expanded(
-            flex: 3,
-            child: bottomBarTextCopyrightWhite(),
-          )
-        ],
-      ),
-    );
-  }
-
-  bottomBarTextCopyrightWhite() {
-    return Padding(
-      padding: const EdgeInsets.only(bottom: 8.0),
-      child: Column(
-        mainAxisAlignment: MainAxisAlignment.end,
-        children: <Widget>[
-          RichText(
-            text: new TextSpan(
-              // Note: Styles for TextSpans must be explicitly defined.
-              // Child text spans will inherit styles from parent
-              style: new TextStyle(
-                fontSize: 12.0,
-                color: Colors.white,
               ),
-              children: <TextSpan>[
-                new TextSpan(
-                    text: 'Copyright © 2020 ',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-                new TextSpan(
-                    text: 'Brokers Circle',
-                    style: new TextStyle(fontWeight: FontWeight.bold)),
-              ],
             ),
           ),
-          Text(
-            "www.brokerscircle.net",
-            style: TextStyle(fontSize: 12.0, color: Colors.white),
+          Expanded(
+            flex: 2,
+            child: Padding(
+              padding: const EdgeInsets.all(10.0),
+              child: Container(
+                width: double.infinity,
+                alignment: Alignment.center,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  color: colorMain,
+                ),
+                child: Text(
+                  'Share Code',
+                  style: TextStyle(
+                      color: Colors.white,
+                      fontSize: 20,
+                      letterSpacing: 1,
+                      fontWeight: FontWeight.w900),
+                ),
+              ),
+            ),
           ),
-          Padding(padding: EdgeInsets.all(5.0))
+          Expanded(
+              flex: 2,
+              child: Align(
+                alignment: Alignment.bottomCenter,
+                child: bottomBarTextCopyright(),
+              )),
         ],
       ),
     );

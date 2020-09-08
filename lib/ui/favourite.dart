@@ -70,31 +70,31 @@ class _FavouriteState extends State<Favourite>
                           controller: _tabController,
                           tabs: [
                             Tab(
-                              text: 'Brokers',
-                            ),
-                            Tab(
-                              text: 'Estates',
-                            ),
-                            Tab(
-                              text: 'Developers',
-                            ),
-                            Tab(
-                              text: 'Property',
-                            ),
-                            Tab(
-                              text: 'Projects',
-                            ),
-                            Tab(
                               text: 'Jobs',
                             ),
                             Tab(
-                              text: 'News & Blogs',
+                              text: 'Buy & Lease',
                             ),
                             Tab(
-                              text: 'Applicants',
+                              text: 'MarketPlace',
                             ),
                             Tab(
-                              text: 'Auctions',
+                              text: 'ELD/GPS Devices',
+                            ),
+                            Tab(
+                              text: 'Finance/Factoring',
+                            ),
+                            Tab(
+                              text: 'Question/Answer',
+                            ),
+                            Tab(
+                              text: 'CDL Schools',
+                            ),
+                            Tab(
+                              text: 'Insurance',
+                            ),
+                            Tab(
+                              text: 'Company Reviews',
                             ),
                           ]),
                     )

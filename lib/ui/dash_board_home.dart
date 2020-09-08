@@ -20,6 +20,7 @@ import 'package:flutterapp/utills/brokers_avatar.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutterapp/models/services_model.dart';
+import 'package:flutterapp/ui/services/job_services_screen.dart';
 
 import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
@@ -279,50 +280,54 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                   shrinkWrap: true,
                   itemBuilder: (ctx, i) {
                     var list = servicesList[i];
-                    return Column(
-                      children: <Widget>[
+                    return GestureDetector(
+                      onTap: (){
+                        openServicePage(i);
+                      },
+                      child: Column(
+                        children: <Widget>[
 
-                        Container(
-                          width: 60.0,
-                          height: 60.0,
-                          decoration: new BoxDecoration(
-                            color: list.color,
-                              shape: BoxShape.circle,
-                             ),
-                          child:Padding(padding: EdgeInsets.all(4),
-                          child:    Container(
+                          Container(
+                            width: 60.0,
+                            height: 60.0,
                             decoration: new BoxDecoration(
-                                color: list.color,
+                              color: smokeybgColor,
                                 shape: BoxShape.circle,
-                                border: Border.all(color: UiColors.white)),
+                               ),
+                            child:Padding(padding: EdgeInsets.all(4),
+                            child:    Container(
+                              decoration: new BoxDecoration(
+                                  color: smokeybgColor,
+                                  shape: BoxShape.circle,
+                                  border: Border.all(color: UiColors.white)),
 
+                              child: Padding(
+                                padding: EdgeInsets.all(13),
+                                child:SvgPicture.asset(
+                                  list.image,
+                                ) ,
+
+                              ),
+                            ),)
+
+                          ),
+                          Container(
+                            width: 75,
                             child: Padding(
-                              padding: EdgeInsets.all(13),
-                              child:SvgPicture.asset(
-                                list.image,
-                                color: UiColors.white,
-                              ) ,
-
-                            ),
-                          ),)
-
-                        ),
-                        Container(
-                          width: 75,
-                          child: Padding(
-                            padding: const EdgeInsets.only(top: 5.0),
-                            child: Text(
-                              "${list.name}",
-                              overflow: TextOverflow.ellipsis,
-                              textAlign: TextAlign.center,
-                              maxLines: 1,
-                              style: TextStyle(
-                                fontSize: 12,
+                              padding: const EdgeInsets.only(top: 5.0),
+                              child: Text(
+                                "${list.name}",
+                                overflow: TextOverflow.ellipsis,
+                                textAlign: TextAlign.center,
+                                maxLines: 1,
+                                style: TextStyle(
+                                  fontSize: 12,
+                                ),
                               ),
                             ),
-                          ),
-                        )
-                      ],
+                          )
+                        ],
+                      ),
                     );
                   }),
             )),
@@ -335,10 +340,8 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
       padding: const EdgeInsets.only(top:8,bottom: 5),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-
         children: <Widget>[
-
-          Divider(thickness: 1,color: smokeybgColor,height: 0,),
+          Divider(thickness: 1,color: smokeybgColor,height: 1,),
           Container(
             height: 110,
             width: MediaQuery.of(context).size.width,
@@ -395,7 +398,7 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                                 child: Text(
                                   "What's on your mind?",
                                   style:
-                                  TextStyle(color: Colors.grey, fontSize: 12.0),
+                                  TextStyle(color: UiColors.black, fontSize: 12.0),
                                 ),
                               ),
                               onTap: () {
@@ -415,27 +418,78 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                   child: Divider(height: 1, thickness: 1,),
                 ),
                 Padding(
-                  padding: const EdgeInsets.all(12.0),
+                  padding: const EdgeInsets.only(left:15.0,right: 15.0,top:10),
                   child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: <Widget>[
-                      Icon(Icons.photo,),
-                      SizedBox(width: 2,),
-                      Text('Photo/Video' , style: TextStyle(fontSize: 12.0),),
-                      Spacer(),
-                      Icon(Icons.camera_alt),
-                      SizedBox(width: 2,),
-                      Text('Camera' , style: TextStyle(fontSize: 12.0),),
-                      Spacer(),
-                      Icon(Icons.poll),
-                      SizedBox(width: 2,),
-                      Text('Poll' , style: TextStyle(fontSize: 12.0),),
-                      Spacer(),
-                      Icon(Icons.business_center),
-                      SizedBox(width: 2,),
-                      Text('Job' , style: TextStyle(fontSize: 12.0),)
+                      Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            'assets/photo.svg',
+                            height:18,
+                            width: 18,
+                          ),
+                          SizedBox(width: 5,),
+                          Text('Photo/Video' , style: TextStyle(fontSize: 12.0,color: UiColors.black),),
+                        ],
+                      ),
+                      Container(
+                        width: 1,
+                        height: 20,
+                        color: colorDivider,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            'assets/jobs_services.svg',
+                            height:18,
+                            width: 18,
+                            color: UiColors.black,
+                          ),
+                          SizedBox(width: 5,),
+                          Text('Jobs' , style: TextStyle(fontSize: 12.0,color: UiColors.black),),
+                        ],
+                      ),
+                      Container(
+                        width: 1,
+                        height: 20,
+                        color: colorDivider,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            'assets/truck_line.svg',
+                            height:20,
+                            width: 20,
+                          ),
+                          SizedBox(width: 5,),
+                          Text('Sell & Lease' , style: TextStyle(fontSize: 12.0,color: UiColors.black),),
+                        ],
+                      ),
+                      Container(
+                        width: 1,
+                        height: 20,
+                        color: colorDivider,
+                      ),
+                      Row(
+                        children: <Widget>[
+                          SvgPicture.asset(
+                            'assets/more.svg',
+                            height:18,
+                            width: 18,
+                          ),
+                          SizedBox(width: 2,),
+                          Text('More' , style: TextStyle(fontSize: 12.0,color: UiColors.black),)
+                        ],
+                      )
                     ],
                   ),
-                )
+                ),
+                Padding(
+                  padding: const EdgeInsets.only(top: 10.0),
+                  child: Divider(height: 1, thickness: 1,),
+                ),
               ],
             ),
           ),
@@ -505,820 +559,21 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
         break;
     }
   }
-/* 
-  //*************** Fitler API Call ***************//
 
-  void getFilterData() {
-    widget.store.getFiltersData(context).then((value) {
-      if (value.error == "false") {
-        widget.store.isFilterListLoaded = true;
-        widget.store.filterPropertyModel = value;
-      }
-    });
-  }
+  void openServicePage(int i) {
 
-  //*************** Brokers List API Call ***************//
-
-  void getBrokersList() {
-    widget.store.getBrokers(context).then((value) {
-      widget.store.isBrokerListLoaded = true;
-      widget.store.brokersList = value;
-    });
-  }
- */
-
-/* 
-  void _onRefresh() async {
-    // monitor network fetch
-    await Future.delayed(Duration(milliseconds: 1000));
-    // if failed,use refreshFailed()
-    _refreshController.refreshCompleted();
-  }
-
-  void _onLoading() async {
-    await Future.delayed(Duration(milliseconds: 1000));
-    //widget.store.brokersList.add((widget.store.brokersList.length + 1).toString());
-    if (mounted) setState(() {});
-    _refreshController.loadComplete();
-  }
- */
-/* 
-  refresh() {
-    return SmartRefresher(
-      enablePullDown: true,
-      enablePullUp: false,
-      header: WaterDropHeader(),
-      footer: CustomFooter(
-        builder: (BuildContext context, LoadStatus mode) {
-          Widget body;
-          if (mode == LoadStatus.idle) {
-            body = Text("pull up load");
-          } else if (mode == LoadStatus.loading) {
-            body = CupertinoActivityIndicator();
-          } else if (mode == LoadStatus.failed) {
-            body = Text("Load Failed!Click retry!");
-          } else if (mode == LoadStatus.canLoading) {
-            body = Text("release to load more");
-          } else {
-            body = Text("No more Data");
-          }
-          return Container(
-            height: 55.0,
-            child: Center(child: body),
-          );
-        },
-      ),
-      controller: _refreshController,
-      onRefresh: _onRefresh,
-      onLoading: _onLoading,
-      child: ListView.builder(
-        itemBuilder: (c, i) => Card(child: Center(child: Text(" asd"))),
-        itemExtent: 100.0,
-        itemCount: 5,
-      ),
-    );
-  }
- */
-
-//*************** More Filter / Home Type Filter Property List ***************//
-
-/*  peopertyTypeList(FilterPropertyModel response, isHomeType) {
-    List<PropertyParentCategory> _propertyParentCategory;
-    if (widget?.store?.filterPropertyModel?.data?.propertyParentCategory !=
-        null) {
-      _propertyParentCategory =
-          widget.store.filterPropertyModel.data.propertyParentCategory;
-      // for (int i = 0; i < response.data.propertyParentCategory.length; i++) {
-      //   for (int j = 0; j < response.data.propertyChildCategory.length; j++) {
-      //     if (response.data.propertyParentCategory[i].id ==
-      //         response.data.propertyChildCategory[j].propertyParentCategoryId) {
-      //       propertyListingHashMap[
-      //               "$response.data.propertyParentCategory[j].id}"] =
-      //           "${response.data.propertyChildCategory[j].propertyParentCategoryId}";
-      //     }
-      //   }
-      // }
-      return Container(
-        height: 25,
-        child: ListView.builder(
-          shrinkWrap: true,
-          scrollDirection: Axis.horizontal,
-          itemCount: _propertyParentCategory?.length,
-          itemBuilder: (ctx, index) {
-            return GestureDetector(
-              onTap: () {
-                if (!isHomeType) return;
-                for (int i = 0;
-                    i < propertyParentCategoryIsClicked.length;
-                    i++) {
-                  propertyParentCategoryIsClicked[i] = false;
-                }
-
-                if (propertyParentCategoryIsClicked[index] == true)
-                  propertyParentCategoryIsClicked[index] = false;
-                else
-                  propertyParentCategoryIsClicked[index] = true;
-
-                widget.store.homeTypeParentID =
-                    response.data.propertyParentCategory[index].id;
-              },
-              child: Container(
-                margin: EdgeInsets.only(
-                    right: _propertyParentCategory.length != int ? 5.0 : 0.0),
-                width: 100,
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(32.0),
-                    color: propertyParentCategoryIsClicked[index]
-                        ? colorMain
-                        : Colors.white,
-                    border: Border.all(width: 1, color: colorMain)),
-                padding: EdgeInsets.all(2.0),
-                alignment: Alignment.center,
-                child: Text(
-                  _propertyParentCategory[index].title,
-                  style: TextStyle(
-                    fontSize: 12,
-                    color: propertyParentCategoryIsClicked[index]
-                        ? Colors.white
-                        : Colors.black,
-                  ),
-                ),
-              ),
-            );
-          },
-        ),
-      );
-    } else
-      Container(
-        width: 0,
-        height: 0,
-      );
-  }
- */
-//*************** More Filter Purpose List ***************//
-
-/* purposeTypeList(FilterPropertyModel response) {
-    return Container(
-      height: 45,
-      child: ListView.builder(
-        shrinkWrap: true,
-        scrollDirection: Axis.horizontal,
-        itemCount: response.data?.propertyPurposes?.length,
-        itemBuilder: (ctx, int) {
-          return Padding(
-            padding: const EdgeInsets.only(top: 8.0, bottom: 8.0, right: 5),
-            child: Container(
-              width: 100,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(32.0),
-                  color: Colors.white,
-                  border: Border.all(width: 1, color: colorMain)),
-              padding: EdgeInsets.all(2.0),
-              alignment: Alignment.center,
-              child: Text(
-                response.data?.propertyPurposes[int].title,
-                style: TextStyle(
-                  fontSize: 12,
-                  color: Colors.black,
-                ),
-              ),
+    switch(i){
+      case 0:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => JobServicesScreen(
+              currentUserImage: basicImageUrl,
             ),
-          );
-        },
-      ),
-    );
+          ),
+        );
+        break;
+    }
   }
- */
+
 }
-/* Widget cards(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Padding(
-      padding: const EdgeInsets.fromLTRB(5, 10, 5, 0),
-      child: ClipRRect(
-        borderRadius: BorderRadius.circular(4.0),
-        child: Image.asset('assets/bhariaimg.png',
-            fit: BoxFit.cover, height: 200.0, width: width),
-      ),
-    );
-  }
- */
-/*   flippableBoxView(isVisible) {
-    return FlippableBox(
-      front: listOfBrokersAndProperties(),
-      back: flipWidgetGoogleMapView(),
-      isFlipped: isVisible,
-    );
-  }
- */
-/* Widget topFavouriteWidget() {
-    return Positioned(
-      top: 15,
-      right: 10,
-      child: Container(
-        padding: EdgeInsets.all(5.0),
-        decoration:
-            BoxDecoration(color: Colors.grey[300], shape: BoxShape.circle),
-        child: SizedBox(
-          height: 18,
-          width: 18,
-          child: IconButton(
-            padding: EdgeInsets.all(0.0),
-            onPressed: () {},
-            icon: Icon(Icons.favorite, size: 18, color: colorMain),
-            //size: suffixIconSize,
-            color: Colors.black,
-          ),
-        ),
-      ),
-    );
-  }
- */
-/*   listOfBrokersAndProperties() {
-    return Container(
-      width: MediaQuery.of(context).size.width,
-      child: Stack(
-        children: <Widget>[
-          CustomScrollView(
-            slivers: [
-              SliverToBoxAdapter(
-                child: Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 0.0),
-                  child: brokersData(),
-                ),
-              ),
-              SliverToBoxAdapter(
-                child: Divider(height: 1, color: colorDivider),
-              ),
-              SliverList(
-                delegate: SliverChildBuilderDelegate(
-                    (context, index) => Container(
-                          color: Colors.white,
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 10.0),
-                            child: Container(
-                              padding: EdgeInsets.only(bottom: 50),
-                              child: Stack(
-                                overflow: Overflow.visible,
-                                children: <Widget>[
-                                  cards(context),
-                                  topFavouriteWidget(),
-                                  bottomWidget(context)
-                                ],
-                              ),
-                            ),
-                          ),
-                        ),
-                    childCount: 5),
-              )
-            ],
-          ),
-          // listingFilters(),
-        ],
-      ),
-    );
-  }
- */
-/*   Widget bottomWidget(BuildContext context) {
-    var width = MediaQuery.of(context).size.width;
-    return Positioned(
-        bottom: -50,
-        right: 0,
-        left: 0,
-        child: Container(
-            padding: EdgeInsets.fromLTRB(10, 0, 10, 0),
-            //  color: Colors.blue,
-            height: 100,
-            width: width,
-            child: Card(
-              //   color: Colors.blue,
-              child: Column(
-                  //  mainAxisAlignment: MainAxisAlignment.start,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: <Widget>[
-                    Padding(
-                      padding: const EdgeInsets.fromLTRB(5, 5, 5, 5),
-                      child: Row(
-                        // mainAxisAlignment: MainAxisAlignment.start,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text('from'),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            'PKR 1.5 Crore',
-                            style: TextStyle(fontWeight: FontWeight.bold),
-                          ),
-                          Spacer(
-                            flex: 2,
-                          ),
-                          Stack(
-                            overflow: Overflow.visible,
-                            children: <Widget>[
-                              Container(
-                                  width: 35,
-//child: Icon(Icons.airline_seat_individual_suite),
-//                            child: Icon(Icons.hotel),
-//                            child: Icon(Icons.open_with),
-                                  child: Image.asset(
-                                    'assets/beds.png',
-                                    fit: BoxFit.fill,
-                                  )),
-                              Positioned(
-                                  top: 4,
-                                  left: -10,
-                                  child: Text('4',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold)))
-                            ],
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          Stack(
-                            overflow: Overflow.visible,
-                            children: <Widget>[
-                              Container(
-                                  width: 30,
-                                  child: Image.asset(
-                                    'assets/washroom.png',
-                                    fit: BoxFit.fill,
-                                  )),
-                              Positioned(
-                                  top: 4,
-                                  left: -10,
-                                  child: Text('4',
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          fontWeight: FontWeight.bold)))
-                            ],
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Text(
-                            '120 Sqft',
-                            style: TextStyle(
-                                fontSize: 12, fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Image.asset('assets/squareft.png')
-                        ],
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0),
-                      child: Text(
-                        'Bahria Town',
-                        style: TextStyle(fontWeight: FontWeight.bold),
-                      ),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(left: 5.0, right: 5.0),
-                      child: Row(
-                        children: <Widget>[
-                          Text(
-                            'Iqbal Villa Karachi',
-                            style: TextStyle(color: Colors.grey),
-                          ),
-                          SizedBox(
-                            width: 5,
-                          ),
-                          Text(
-                            '(Pakistan)',
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold, color: colorMain),
-                          ),
-                          Spacer(
-                            flex: 2,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                shape: BoxShape.circle),
-                            child: SizedBox(
-                              height: 18,
-                              width: 18,
-                              child: IconButton(
-                                padding: EdgeInsets.all(0.0),
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.phone_android,
-                                  size: 18,
-                                  color: colorMain,
-                                ),
-                                //size: suffixIconSize,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                shape: BoxShape.circle),
-                            child: SizedBox(
-                              height: 18,
-                              width: 18,
-                              child: IconButton(
-                                padding: EdgeInsets.all(0.0),
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.phone_in_talk,
-                                  size: 18,
-                                  color: colorMain,
-                                ),
-                                //size: suffixIconSize,
-                              ),
-                            ),
-                          ),
-                          SizedBox(
-                            width: 8,
-                          ),
-                          Container(
-                            padding: EdgeInsets.all(4.0),
-                            decoration: BoxDecoration(
-                                color: Colors.grey[300],
-                                shape: BoxShape.circle),
-                            child: SizedBox(
-                              height: 18,
-                              width: 18,
-                              child: IconButton(
-                                padding: EdgeInsets.all(0.0),
-                                onPressed: () {},
-                                icon: Icon(
-                                  Icons.play_arrow,
-                                  size: 18,
-                                  color: colorMain,
-                                ),
-                                //size: suffixIconSize,
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                    )
-                  ]),
-            )));
-  }
- */
-/*  brokersData() {
-    return Observer(
-      name: "brokerList",
-      builder: (context) => Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 0.0),
-        child: widget?.store?.brokersList?.noOfRecords == 0 ||
-                widget?.store?.brokersList?.noOfRecords == null
-            ? new Container(
-                alignment: Alignment.center,
-                height: 85,
-                width: MediaQuery.of(context).size.width,
-                color: Colors.white,
-                child: Text(
-                  '',
-                  textAlign: TextAlign.center,
-                ),
-              )
-            : SizedBox(
-                height: 85,
-                width: MediaQuery.of(context).size.width,
-                child: ListView.builder(
-                  shrinkWrap: true,
-                  scrollDirection: Axis.horizontal,
-                  itemCount: widget.store.brokersList.noOfRecords,
-                  itemBuilder: (ctx, int) {
-                    var data = widget.store.brokersList.data.data;
-                    var profilePicUrl =
-                        widget.store.brokersList.url + "" + data[int].picture;
-                    return InkWell(
-                      onTap: () {
-                        showProfileDialog(context, data[int], profilePicUrl);
-                      },
-                      child: Container(
-                        width: 60,
-                        color: Colors.white,
-                        child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: <Widget>[
-                            Stack(
-                              children: <Widget>[
-                                CircleAvatar(
-                                    radius: 28.0,
-                                    backgroundImage:
-                                        NetworkImage(profilePicUrl),
-                                    backgroundColor: disabledButtonColor),
-                                Positioned(
-                                  right: 5,
-                                  bottom: 0,
-                                  child: (data[int].status == "true")
-                                      ? new Container(
-                                          alignment: Alignment.bottomRight,
-                                          width: 12.0,
-                                          height: 12.0,
-                                          decoration: BoxDecoration(
-                                              color: Color(0xff3ED10A),
-                                              shape: BoxShape.circle),
-                                        )
-                                      : new Container(),
-                                )
-                              ],
-                            ),
-                            Padding(
-                              padding:
-                                  const EdgeInsets.symmetric(vertical: 5.0),
-                              child: Text(
-                                "${data[int].title}",
-                                overflow: TextOverflow.ellipsis,
-                                textAlign: TextAlign.center,
-                                maxLines: 1,
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
-                              ),
-                            )
-                          ],
-                        ),
-                      ),
-                    );
-                  },
-                ),
-              ),
-      ),
-    );
-  }
- */
-//*************** Listing Filter ***************//
-/*   listingFilter() {
-    List<PropertyPurpose> filterPropertyPurposes;
-    if (widget?.store?.filterPropertyModel != null) {
-      FilterPropertyModel data = widget?.store?.filterPropertyModel;
-      for (int i = 0; i < data.data?.propertyPurposes?.length; i++) {
-        for (int j = 0; j < data.data?.propertyPurposeTypes?.length; j++) {
-          if (data.data.propertyPurposes[i].id ==
-              data.data.propertyPurposeTypes[j].propertyPurposeId) {
-            propertyListingHashMap["${data.data.propertyPurposeTypes[j].id}"] =
-                "${data.data.propertyPurposeTypes[j].propertyPurposeId}";
-          }
-        }
-        propertyPurposesCheckBox.add(false);
-        propertyPurposesTypeExpandable.add(false);
-      }
-      filterPropertyPurposes =
-          widget?.store?.filterPropertyModel?.data?.propertyPurposes;
-    }
-    return Container(
-      child: widget.store.filterPropertyModel != null
-          ? Container(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                mainAxisSize: MainAxisSize.min,
-                children: <Widget>[
-                  Container(
-                    color: colorMain,
-                    height: 1,
-                  ),
-                  SizedBox(
-                    height: 4,
-                  ),
-                  ListView.builder(
-                    shrinkWrap: true,
-                    itemCount: filterPropertyPurposes.length,
-                    itemBuilder: (BuildContext context, int index) {
-                      return Column(
-                        children: <Widget>[
-                          Padding(
-                            padding: const EdgeInsets.only(
-                                left: 15.0, right: 15, top: 8),
-                            child: Container(
-                              height: 35,
-                              decoration: BoxDecoration(
-                                  color: Colors.white,
-                                  borderRadius: BorderRadius.circular(32),
-                                  border:
-                                      Border.all(color: colorMain, width: 1.0)),
-                              child: Padding(
-                                padding: const EdgeInsets.all(8.0),
-                                child: Row(
-                                  children: <Widget>[
-                                    Container(
-                                      margin:
-                                          EdgeInsets.only(left: 10, right: 10),
-                                      width: 10,
-                                      height: 10,
-                                      color: setColor(
-                                          filterPropertyPurposes[index].title),
-                                    ),
-                                    Expanded(
-                                        flex: 5,
-                                        child: Text(
-                                            filterPropertyPurposes[index]
-                                                .title)),
-                                    propertyListingHashMap.containsValue(
-                                            filterPropertyPurposes[index].id)
-                                        ? InkWell(
-                                            child: Container(
-                                              alignment: Alignment.topCenter,
-                                              child: Icon(
-                                                !propertyPurposesTypeExpandable[
-                                                        index]
-                                                    ? Icons.keyboard_arrow_down
-                                                    : Icons.keyboard_arrow_up,
-                                                color: Colors.grey,
-                                              ),
-                                            ),
-                                            onTap: () {
-                                              setState(() {
-                                                propertyPurposesTypeExpandable[
-                                                        index] =
-                                                    !propertyPurposesTypeExpandable[
-                                                        index];
-                                              });
-                                            },
-                                          )
-                                        : new Container(),
-                                    Expanded(
-                                      child: Theme(
-                                        data: ThemeData(
-                                          unselectedWidgetColor: colorMain,
-                                        ),
-                                        child: Checkbox(
-                                            checkColor: Colors
-                                                .white, // color of tick Mark
-                                            activeColor: colorMain,
-                                            value:
-                                                propertyPurposesCheckBox[index],
-                                            onChanged: (bool val) {
-                                              setState(() {
-                                                propertyPurposesCheckBox[
-                                                        index] =
-                                                    !propertyPurposesCheckBox[
-                                                        index];
-                                              });
-                                            }),
-                                      ),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                            ),
-                          ),
-                          ExpandableContainer(
-                            expanded: propertyPurposesTypeExpandable[index],
-                            list: widget.store.filterPropertyModel.data
-                                .propertyPurposeTypes,
-                            index: index,
-                            propertyListingParentID:
-                                int.tryParse(filterPropertyPurposes[index].id),
-                          )
-                        ],
-                      );
-                    },
-                  ),
-                  SizedBox(
-                    height: 20,
-                  ),
-                  Padding(
-                    padding: const EdgeInsets.only(left: 15.0, right: 15.0),
-                    child: Row(
-                      children: <Widget>[
-                        Expanded(child: resetButton()),
-                        SizedBox(
-                          width: 10,
-                        ),
-                        Expanded(
-                          child: filterButton(),
-                        )
-                      ],
-                    ),
-                  ),
-                  SizedBox(
-                    height: 10,
-                  ),
-                  Container(
-                    color: colorMain,
-                    height: 1,
-                  )
-                ],
-              ),
-            )
-          : Container(
-              height: 0,
-              width: 0,
-            ),
-    );
-  }
- */
-//*************** Home Type Filter ***************//
-/*  homeTypeFilter() {
-    var width = MediaQuery.of(context).size.width;
-    return Container(
-      width: width,
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: <Widget>[
-          SizedBox(
-            height: 10,
-          ),
-          //   peopertyTypeList(widget.store.filterPropertyModel, true),
-          SizedBox(
-            height: 10,
-          ),
-          // homeTypeFilterGridView(),
-          SizedBox(
-            height: 10,
-          ),
-          Padding(
-            padding: const EdgeInsets.symmetric(horizontal: 10.0),
-            child: Row(
-              children: <Widget>[
-                Expanded(child: resetButton()),
-                SizedBox(
-                  width: 10,
-                ),
-                Expanded(
-                  child: filterButton(),
-                )
-              ],
-            ),
-          ),
-          SizedBox(
-            height: 10,
-          ),
-          Container(
-            color: colorMain,
-            height: 1,
-          )
-        ],
-      ),
-    );
-  }
- */
-//*************** Home Type Filter Grid View ***************//
-/* homeTypeFilterGridView() {
-    List<PropertyChildCategory> _propertyChildCategory = [];
-    if (widget.store.homeTypeParentID != "") {
-      for (int i = 0;
-          i <
-              widget
-                  .store.filterPropertyModel.data.propertyChildCategory.length;
-          i++) {
-        if (widget.store.filterPropertyModel.data.propertyChildCategory[i]
-                .propertyParentCategoryId ==
-            widget.store.homeTypeParentID) {
-          _propertyChildCategory.add(
-              widget.store.filterPropertyModel.data.propertyChildCategory[i]);
-        }
-      }
-      countGridView = _propertyChildCategory.length;
-      widget.store.propertyChildCategoryIsClicked =
-          List.generate(countGridView, (_) => false);
-    }
-    return widget.store.homeTypeParentID.isNotEmpty ||
-            widget.store.homeTypeParentID != ""
-        ? Center(
-            child: Container(
-              padding: EdgeInsets.symmetric(horizontal: 10.0),
-              height: countGridView.isEven
-                  ? countGridView / 2 * 23.0
-                  : countGridView / 2 * 27.0,
-              child: GridView.count(
-                crossAxisCount: 2,
-                childAspectRatio: 8.0,
-                children: List.generate(countGridView, (index) {
-                  return Container(
-                    child: Row(
-                      mainAxisSize: MainAxisSize.min,
-                      children: <Widget>[
-                        Expanded(
-                            child: Text(
-                          _propertyChildCategory[index].title,
-                          textAlign: TextAlign.center,
-                        )),
-                        Expanded(
-                          child: SizedBox(
-                              height: 27,
-                              child: CheckBoxForHomeType(
-                                index: index,
-                                dashBoardMainStore: widget.store,
-                              )),
-                        ),
-                      ],
-                    ),
-                  );
-                }),
-              ),
-            ),
-          )
-        : Container(
-            height: 0,
-            width: 0,
-          );
-  }
- */

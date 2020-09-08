@@ -52,12 +52,12 @@ class _SignInState extends State<SignIn> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
-//          decoration: BoxDecoration(
-//              image: DecorationImage(
-//                  image: AssetImage('assets/bg_image.png'),
-//                  colorFilter: new ColorFilter.mode(
-//                      Colors.white.withOpacity(0.3), BlendMode.dstIn),
-//                  fit: BoxFit.fill)),
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/bg_image.png'),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.white.withOpacity(0.3), BlendMode.dstIn),
+                  fit: BoxFit.fill)),
           child: SizedBox(
             height: height * 15,
             child: Column(

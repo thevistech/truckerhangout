@@ -72,10 +72,10 @@ class _MyListingsScreenState extends State<MyListingsScreen>
                               text: 'Jobs',
                             ),
                             Tab(
-                              text: 'Property',
+                              text: 'Sell & Lease',
                             ),
                             Tab(
-                              text: 'Projects',
+                              text: 'MarketPlace',
                             ),
                             Tab(
                               text: 'News & Blogs',

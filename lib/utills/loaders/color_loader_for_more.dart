@@ -11,7 +11,7 @@ class ColorLoader2 extends StatefulWidget {
   ColorLoader2(
       {this.color1 = colorMain,
       this.color2 = Colors.black,
-      this.color3 = Colors.blueAccent});
+      this.color3 = Colors.white});
 
   @override
   _ColorLoader2State createState() => _ColorLoader2State();

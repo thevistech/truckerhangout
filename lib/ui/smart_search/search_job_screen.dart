@@ -22,7 +22,7 @@ class _SearchJobsScreenState extends State<SearchJobsScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
+              image: 'assets/bg1.png',
               appBarLabel: 'Search Jobs',
               imageUrl: widget.userImage,
               pageLogoImage: 'assets/job_search_line.svg',

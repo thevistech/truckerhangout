@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:flutterapp/utills/UiColors.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:flutterapp/utills/loaders/color_loader.dart';
 
@@ -58,9 +59,9 @@ class _ProgressExtendedState extends State<ProgressExtended> {
       children: <Widget>[
         Center(
           child: ColorLoader5(
-            dotOneColor: colorLoadingBlue,
-            dotTwoColor: colorLoadingRed,
-            dotThreeColor: colorLoadingLightBlue,
+            dotOneColor: colorMain,
+            dotTwoColor: UiColors.black,
+            dotThreeColor: UiColors.white,
           ),
         ),
       ],

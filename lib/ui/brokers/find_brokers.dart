@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/ui/brokers/brokers_map.dart';
-import 'package:flutterapp/ui/smart_search/search_broker_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_cdl_schools_screen.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:flutterapp/stores/dashboard_main_store.dart';
 import '../components/start_rating_widget.dart';

@@ -3,9 +3,10 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutterapp/models/brokers_dashboard.dart';
 import 'package:flutterapp/stores/dashboard_main_store.dart';
 import 'package:flutterapp/ui/chats/chat.dart';
+import 'package:flutterapp/ui/notifications/notifications.dart';
 import 'package:flutterapp/ui/smart_search/search_job_screen.dart';
-import 'package:flutterapp/ui/smart_search/search_project_screen.dart';
-import 'package:flutterapp/ui/smart_search/search_property_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_eldgps_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_buy_lease_screen.dart';
 import 'package:flutterapp/ui/smart_search/types_list_screen.dart';
 import 'package:flutterapp/ui/profiles/user_profile.dart';
 import 'package:flutterapp/utills/config.dart';
@@ -101,8 +102,25 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                         onTap: () {
                           Navigator.push(context,
                               MaterialPageRoute(builder: (context) {
-                            return Chat();
+                            return NotificationsUI();
                           }));
+                        },
+                        child: SvgPicture.asset(
+                          "assets/icon_notification.svg",
+                          allowDrawingOutsideViewBox: true,
+                          height: 30,
+                          color: Colors.black,
+                        ),
+                      ),
+                    ),
+                    Expanded(
+                      flex: 1,
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(context,
+                              MaterialPageRoute(builder: (context) {
+                                return Chat();
+                              }));
                         },
                         child: SvgPicture.asset(
                           "assets/message.svg",
@@ -169,32 +187,7 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                 color: colorDivider,
                 height: 2,
               ),
-//              widget.store.isInternetConnected
-//                  ? widget.store.isFilterVisible
-//                      ? (widget.store.isFilterListLoaded
-//                          ? Container(
-//                              padding: EdgeInsets.only(top: 5, bottom: 5),
-//                              child: MainDashBoardCustomMenu(
-//                                store: widget.store,
-//                                userImage: imgUrl,
-//                              ))
-//                          : Container(
-//                              padding: EdgeInsets.only(top: 5, bottom: 5),
-//                              child: shimmerFilterListView(context),
-//                            ))
-//                      : Container()
-//                  : Container(
-//                      height: 35,
-//                      color: Colors.white,
-//                    ),
-//              widget.store.isFilterVisible
-//                  ? widget.store.isFilterListLoaded
-//                      ? Divider(
-//                          color: colorDivider,
-//                          height: 2,
-//                        )
-//                      : Container()
-//                  : Container(),
+
             ],
           ),
         ),
@@ -206,49 +199,43 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
     return Row(
       children: <Widget>[
         Expanded(
-          child: Container(
-            height: 28,
-            decoration: BoxDecoration(
-              border: Border.all(width: 1, color: colorMain),
-              color: colorMain,
-              borderRadius: BorderRadius.only(
-                topLeft: Radius.circular(32),
-                topRight: Radius.zero,
-                bottomLeft: Radius.circular(32),
-                bottomRight: Radius.zero,
-              ),
-            ),
-            child: Icon(
-              Icons.search,
-              color: Colors.white,
-              size: 20,
-            ),
-          ),
-        ),
-        Expanded(
           flex: 3,
           child: GestureDetector(
             onTap: () {
-              searchRoutes(title);
-            },
+              Navigator.push(context, MaterialPageRoute(builder: (context) {
+                return SmartSearchCategory(
+                  currentUserImage: imgUrl,
+                );
+              }));
+              },
             child: Container(
               padding: EdgeInsets.only(left: 5),
               alignment: Alignment.centerLeft,
               height: 28,
               decoration: BoxDecoration(
-                border: Border.all(width: 1, color: colorMain),
+                border: Border.all(width: 1, color: Colors.black),
                 color: Colors.white,
-                borderRadius: BorderRadius.only(
-                  topRight: Radius.circular(32),
-                  bottomRight: Radius.circular(32),
+                borderRadius: BorderRadius.all(
+                   Radius.circular(32),
                 ),
               ),
-              child: Text(
-                searchTitle("$title"),
-                overflow: TextOverflow.ellipsis,
-                maxLines: 1,
-                textAlign: TextAlign.center,
-                style: TextStyle(fontSize: 12),
+              child: Row(
+                children: <Widget>[
+                  SvgPicture.asset(
+                    "assets/search_icon.svg",
+                    allowDrawingOutsideViewBox: true,
+                    height: 14,
+                  ),
+                  Padding(
+                    padding: const EdgeInsets.only(left:5.0),
+                    child: Text("Search",
+                      overflow: TextOverflow.ellipsis,
+                      maxLines: 1,
+                      textAlign: TextAlign.center,
+                      style: TextStyle(fontSize: 12,color: Colors.black),
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -271,38 +258,38 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
     }
   }
 
-  searchRoutes(title) {
-    switch (title) {
-      case PROPERTIES:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SearchPropertyScreen(
-              userImage: imgUrl,
-            ),
-          ),
-        );
-        break;
-      case PROJECTS:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SearchProjectsScreen(
-              userImage: imgUrl,
-            ),
-          ),
-        );
-        break;
-      case JOBS:
-        Navigator.push(
-          context,
-          MaterialPageRoute(
-            builder: (context) => SearchJobsScreen(
-              userImage: imgUrl,
-            ),
-          ),
-        );
-        break;
-    }
-  }
+//  searchRoutes(title) {
+//    switch (title) {
+//      case PROPERTIES:
+//        Navigator.push(
+//          context,
+//          MaterialPageRoute(
+//            builder: (context) => SearchPropertyScreen(
+//              userImage: imgUrl,
+//            ),
+//          ),
+//        );
+//        break;
+//      case PROJECTS:
+//        Navigator.push(
+//          context,
+//          MaterialPageRoute(
+//            builder: (context) => SearchProjectsScreen(
+//              userImage: imgUrl,
+//            ),
+//          ),
+//        );
+//        break;
+//      case JOBS:
+//        Navigator.push(
+//          context,
+//          MaterialPageRoute(
+//            builder: (context) => SearchJobsScreen(
+//              userImage: imgUrl,
+//            ),
+//          ),
+//        );
+//        break;
+//    }
+//  }
 }

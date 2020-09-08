@@ -80,6 +80,12 @@ class _SignUpNewState extends State<SignUpNew> {
     return Scaffold(
       body: SingleChildScrollView(
         child: Container(
+          decoration: BoxDecoration(
+              image: DecorationImage(
+                  image: AssetImage('assets/bg_image.png'),
+                  colorFilter: new ColorFilter.mode(
+                      Colors.white.withOpacity(0.3), BlendMode.dstIn),
+                  fit: BoxFit.fill)),
 
           child: SizedBox(
             height: height * 15,
@@ -125,17 +131,17 @@ class _SignUpNewState extends State<SignUpNew> {
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: <Widget>[
-                          Visibility(
-                            maintainSize: false,
-                            maintainAnimation: true,
-                            maintainState: true,
-                            visible: _visible,
-                            child: Container(
-                                margin:
-                                    EdgeInsets.only(bottom: _visible ? 50 : 0),
-                                alignment: Alignment.center,
-                                child: MyCustomMenu(store: store)),
-                          ),
+//                          Visibility(
+//                            maintainSize: false,
+//                            maintainAnimation: true,
+//                            maintainState: true,
+//                            visible: _visible,
+//                            child: Container(
+//                                margin:
+//                                    EdgeInsets.only(bottom: _visible ? 50 : 0),
+//                                alignment: Alignment.center,
+//                                child: MyCustomMenu(store: store)),
+//                          ),
                           Visibility(
                             maintainSize: false,
                             maintainAnimation: true,
@@ -181,12 +187,13 @@ class _SignUpNewState extends State<SignUpNew> {
                             visible: !_visible,
                             child: Column(
                               children: <Widget>[
-                                Observer(
-                                  builder: (_) =>
-                                      store.userLoginAs != UserType.VISITOR
-                                          ? companyName(height, width)
-                                          : Container(),
-                                ),
+//                                Observer(
+//                                  builder: (_) =>
+//                                      store.userLoginAs != UserType.VISITOR
+//                                          ? companyName(height, width)
+//                                          : Container(),
+//                                ),
+                                companyName(height, width),
                                 SizedBox(
                                   height: 15,
                                 ),
@@ -1021,9 +1028,9 @@ class _SignUpNewState extends State<SignUpNew> {
         child: ToggleButtons(
           borderWidth: 1,
           borderRadius: BorderRadius.circular(20),
-          borderColor: colorLoadingBlue,
+          borderColor: colorMain,
           color: colorMain,
-          selectedBorderColor: colorLoadingBlue,
+          selectedBorderColor: colorMain,
           selectedColor: colorMain,
           fillColor: colorMain,
           highlightColor: colorMain,

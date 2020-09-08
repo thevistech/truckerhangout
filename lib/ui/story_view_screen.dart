@@ -62,12 +62,12 @@ class _MoreStoriesState extends State<MoreStories> {
                               height: 40,
                               imageUrl: widget.userImg,
                               placeholder: (context, url) => Container(
-                                    height: 40,
-                                    width: 40,
-                                    child: new CircularProgressIndicator(
-                                      backgroundColor: colorMain,
-                                    ),
-                                  ),
+                                height: 40,
+                                width: 40,
+                                child: new CircularProgressIndicator(
+                                  backgroundColor: colorMain,
+                                ),
+                              ),
                               errorWidget: (context, url, error) =>
                                   SvgPicture.asset(
                                     defaultUserImage,
@@ -110,26 +110,24 @@ class _MoreStoriesState extends State<MoreStories> {
         backgroundColor: Colors.black,
         body: Stack(
           children: [
-            Expanded(
-              child: Container(
-                width: MediaQuery.of(context).size.width,
-                child: StoryView(
-                  storyItems: [
-                    StoryItem.pageImage(
-                      url: widget.storyImage,
-                      controller: storyController,
-                    ),
-                  ],
-                  onStoryShow: (s) {
-                    print("Showing a story");
-                  },
-                  onComplete: () {
-                    Navigator.of(context).pop();
-                  },
-                  progressPosition: ProgressPosition.top,
-                  repeat: false,
-                  controller: storyController,
-                ),
+            Container(
+              width: MediaQuery.of(context).size.width,
+              child: StoryView(
+                storyItems: [
+                  StoryItem.pageImage(
+                    url: widget.storyImage,
+                    controller: storyController,
+                  ),
+                ],
+                onStoryShow: (s) {
+                  print("Showing a story");
+                },
+                onComplete: () {
+                  Navigator.of(context).pop();
+                },
+                progressPosition: ProgressPosition.top,
+                repeat: false,
+                controller: storyController,
               ),
             ),
             Positioned.fill(
@@ -198,128 +196,6 @@ class _MoreStoriesState extends State<MoreStories> {
             ),
           ],
         ));
-
-//        Stack(
-//
-//      children: <Widget>[
-//
-//        Padding(
-//          padding: const EdgeInsets.only(top: 48.0),
-//          child: Container(
-//            width: MediaQuery.of(context).size.width,
-//            child: Padding(
-//              padding: const EdgeInsets.only(top:20.0),
-//              child: StoryView(
-//                storyItems: [
-//                  StoryItem.pageImage(
-//                    url: widget.storyImage,
-//                    controller: storyController,
-//                  ),
-//                ],
-//                onStoryShow: (s) {
-//                  print("Showing a story");
-//                },
-//                onComplete: () {
-//                  Navigator.of(context).pop();
-//                },
-//                progressPosition: ProgressPosition.top,
-//                repeat: false,
-//                controller: storyController,
-//
-//              ),
-//            ),
-//          ),
-//        ),
-////          Padding(
-////            padding: const EdgeInsets.only(left:5.0,top:25,right:5.0),
-////            child: Stack(
-////              children: <Widget>[
-////                Positioned(
-////                    top: 20.0,
-////                    right: 0.0,
-////                    left: 0.0,
-////                    child: Padding(
-////                      padding: const EdgeInsets.symmetric(horizontal: 8.0),
-////                      child: Row(
-////                        children: <Widget>[
-////                          Icon(
-////                            Icons.arrow_back,
-////                            color: Colors.white,
-////                          ),
-////                          SizedBox(width: 10,),
-////                          Container(
-////                              child: ClipRRect(
-////                                  borderRadius: BorderRadius.circular(40.0),
-////                                  child: CachedNetworkImage(
-////                                      fit: BoxFit.cover,
-////                                      width: 40,
-////                                      height: 40,
-////                                      imageUrl: widget.storyImage,
-////                                      placeholder: (context, url) => Container(
-////                                            height: 40,
-////                                            width: 40,
-////                                            child: new CircularProgressIndicator(
-////                                              backgroundColor: colorMain,
-////                                            ),
-////                                          ),
-////                                      errorWidget: (context, url, error) =>
-////                                          SvgPicture.asset(
-////                                            defaultUserImage,
-////                                            height: 40,
-////                                            width: 40,
-////                                          )))),
-////                          Padding(padding: EdgeInsets.only(left: 10.0)),
-////                          Expanded(
-////                              flex: 2,
-////                              child: Column(
-////                                crossAxisAlignment: CrossAxisAlignment.start,
-////                                children: <Widget>[
-////                                  Text(
-////                                    'Muhammad Masood',
-////                                    maxLines: 1,
-////                                    overflow: TextOverflow.ellipsis,
-////                                    style: TextStyle(
-////                                        color: Colors.white,
-////                                        fontSize: 14.0,
-////                                        fontWeight: FontWeight.bold),
-////                                  ),
-////                                  Padding(
-////                                      padding:
-////                                          EdgeInsets.only(left: 5.0, top: 2)),
-////                                  Text(
-////                                    "4 minutes ago",
-////                                    maxLines: 1,
-////                                    overflow: TextOverflow.ellipsis,
-////                                    style: TextStyle(
-////                                        fontSize: 12.0, color: Colors.white),
-////                                  ),
-////                                ],
-////                              )),
-////                          Spacer(),
-////                          Icon(
-////                            Icons.more_vert,
-////                            color: Colors.white,
-////                          )
-////                        ],
-////                      ),
-////                    )),
-////              ],
-////            ),
-////          ),
-//
-//        Padding(
-//          padding: const EdgeInsets.only(left:5.0,top:20,right:5.0),
-//          child: Positioned(
-//              top: 0.0,
-//              right: 0.0,
-//              left: 0.0,
-//              child: Padding(
-//                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-//                child: inputTextFeildAndSubmitButton(),
-//              )),
-//        ),
-//      ],
-//    ));
   }
 
   inputTextFeildAndSubmitButton(double width) {

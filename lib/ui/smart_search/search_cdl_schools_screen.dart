@@ -1,16 +1,19 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_svg/svg.dart';
+import 'package:flutterapp/ui/chats/chat.dart';
 import 'package:flutterapp/ui/smart_search/rounded_image_clipper.dart';
 import 'package:flutterapp/utills/config.dart';
 
-class SearchPropertyScreen extends StatefulWidget {
-  SearchPropertyScreen({this.userImage});
+class SearchCdlSchoolsScreen extends StatefulWidget {
+  SearchCdlSchoolsScreen({this.userImage});
   final userImage;
   @override
-  _SearchPropertyScreenState createState() => _SearchPropertyScreenState();
+  _SearchCdlSchoolsScreenState createState() => _SearchCdlSchoolsScreenState();
 }
 
-class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
+class _SearchCdlSchoolsScreenState extends State<SearchCdlSchoolsScreen> {
   @override
   Widget build(BuildContext context) {
     double screenHeight = MediaQuery.of(context).size.height;
@@ -22,25 +25,25 @@ class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
           children: <Widget>[
             RoundedImageWidget(
               screenHeight: screenHeight,
-              image: 'assets/blueimg.png',
-              appBarLabel: 'Search Property',
+              image: 'assets/bg1.png',
+              appBarLabel: 'CDL School',
               imageUrl: widget.userImage,
-              pageLogoImage: 'assets/property_search_line.svg',
-              pageTitle: 'Search Property',
-              pageDesc: 'Find Property of your interest',
+              pageLogoImage: 'assets/cdl_service.svg',
+              pageTitle: 'Search CDL Schools',
+              pageDesc: 'Find Truck Driving Schools in Your Area',
             ),
             Padding(
               padding: EdgeInsets.only(
                   top: screenHeight * 0.11, right: 15, left: 15),
-              child: propertyWidget(screenHeight / 15, screenWidth),
+              child: brokerWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.02),
             Padding(
               padding: EdgeInsets.only(right: 15, left: 15),
-              child: locationWidget(screenHeight / 15, screenWidth),
+              child: brokerWidget(screenHeight / 15, screenWidth),
             ),
             SizedBox(height: screenHeight * 0.03),
-            widgetSearchPropertyButton(screenHeight / 15, screenWidth),
+            widgetSearchBrokersButton(screenHeight / 15, screenWidth),
             SizedBox(height: screenWidth * 0.23),
             bottomBarTextCopyright()
           ],
@@ -49,7 +52,7 @@ class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
     );
   }
 
-  widgetSearchPropertyButton(heightButton, width) {
+  widgetSearchBrokersButton(heightButton, width) {
     return Observer(
       builder: (_) => Container(
         margin: EdgeInsets.fromLTRB(20, 0, 20, 0),
@@ -76,7 +79,7 @@ class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
               Align(
                 alignment: Alignment.center,
                 child: Text(
-                  'Search Property',
+                  'Search CDL Schools',
                   style: TextStyle(
                       fontSize: buttonFontSize, fontWeight: FontWeight.bold),
                   textAlign: TextAlign.center,
@@ -106,7 +109,28 @@ class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
       ),
     );
   }
-  propertyWidget(height, width) {
+
+  SizedBox widgeSearchProjectButton(double width) {
+    return SizedBox(
+      width: width * 0.92,
+      child: OutlineButton(
+        padding: EdgeInsets.zero,
+        onPressed: () {},
+        borderSide: BorderSide(color: Colors.white, width: 1),
+        shape: RoundedRectangleBorder(
+          side: BorderSide(width: width * 0.9),
+          borderRadius: new BorderRadius.circular(30.0),
+        ),
+        child: Text('Search CDL School',
+            style: TextStyle(
+                color: Colors.white,
+                fontSize: 15,
+                fontWeight: FontWeight.w600)),
+      ),
+    );
+  }
+
+  brokerWidget(height, width) {
     return Container(
       height: height40,
       width: width,
@@ -119,7 +143,7 @@ class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
         decoration: InputDecoration(
           filled: true,
           fillColor: Colors.white,
-          hintText: 'Job Title, Keywords, company',
+          hintText: 'Keywords, School name',
           hintStyle: TextStyle(color: Colors.black),
           prefixIcon: Container(
             margin: EdgeInsets.fromLTRB(0, 4, 8, 4),
@@ -144,6 +168,7 @@ class _SearchPropertyScreenState extends State<SearchPropertyScreen> {
       ),
     );
   }
+
   locationWidget(height, width) {
     return Container(
       height: height40,

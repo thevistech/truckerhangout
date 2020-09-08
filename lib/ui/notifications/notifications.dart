@@ -4,17 +4,16 @@ import 'package:flutterapp/stores/notification_store.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:flutterapp/utills/loaders/color_loader.dart';
 import 'package:flutterapp/utills/loaders/color_loader_for_more.dart';
-import '../shimmer/simpleListView.dart';
+import '../../shimmer/simpleListView.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:timeago/timeago.dart' as timeago;
-import '../models/notification_model.dart';
+import '../../models/notification_model.dart';
 
 List<Datum> notificationNewList = new List();
 
 class NotificationsUI extends StatefulWidget {
-  final NotificationStore notificationStore;
-  NotificationsUI({this.notificationStore, Key key}) : super(key: key);
+  NotificationStore notificationStore = new NotificationStore();
   @override
   _NotificationsState createState() => _NotificationsState();
 }
@@ -36,8 +35,14 @@ class _NotificationsState extends State<NotificationsUI> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      child: Stack(
+    return Scaffold(
+      appBar: AppBar(
+        backgroundColor: colorMain,
+        title: Text('Notifications'),
+        titleSpacing: 0.0,
+        actions: actionWidgets(context),
+      ),
+      body: Stack(
         children: <Widget>[
           backgroundImage(),
           Observer(

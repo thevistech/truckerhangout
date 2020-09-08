@@ -2,11 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutterapp/stores/dashboard_main_store.dart';
 import 'package:flutterapp/ui/chats/chat.dart';
-import 'package:flutterapp/ui/smart_search/search_broker_screen.dart';
+import 'package:flutterapp/ui/smart_search/search_cdl_schools_screen.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:flutterapp/ui/smart_search/search_developer_sreen.dart';
+import 'package:flutterapp/ui/smart_search/search_marketplace_screen.dart';
 import 'package:flutterapp/ui/brokers/brokers_map.dart';
 
 class appBarWithSearch extends StatefulWidget implements PreferredSizeWidget {
@@ -70,7 +70,7 @@ class _appBarWithSearch extends State<appBarWithSearch> {
                         },
                       ),
                     ),
-                    Expanded(flex: 5, child: showSearchBar()),
+                    Expanded(flex: 5, child: Container()),
                     InkWell(
                       onTap: () {
                         widget.store.isbrokerMapVisible =
@@ -134,7 +134,7 @@ class _appBarWithSearch extends State<appBarWithSearch> {
       ),
     );
   }
-
+/*
   showSearchBar() {
     return Row(
       children: <Widget>[
@@ -204,5 +204,5 @@ class _appBarWithSearch extends State<appBarWithSearch> {
         ),
       ],
     );
-  }
+  }*/
 }
