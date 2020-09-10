@@ -23,11 +23,11 @@ class _JobServicesScreenState extends State<JobServicesScreen> {
           BackgroundImageServices(
             screenHeight:  screenHeight,
             image: 'assets/bg1.png',
-            appBarLabel: 'Search',
+            appBarLabel: 'Job Board',
             imageUrl:widget.currentUserImage,
-            pageLogoImage: 'assets/search.svg',
-            pageTitle: 'What do you want to Search?',
-            pageDesc: 'Select the following category',
+            pageLogoImage: 'assets/jobs_services.svg',
+            pageTitle: 'JOB BOARD',
+            pageDesc: 'Best job opportunities! Matching the requirements between employees and employers in just a few minutes!',
           ),
 //          Container(
 //            child: Column(

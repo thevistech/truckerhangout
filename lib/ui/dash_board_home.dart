@@ -15,12 +15,19 @@ import 'package:flutterapp/ui/googleMapClustering/googleMap.dart';
 import 'package:flutterapp/ui/google_map_with_bottom_card.dart';
 import 'package:flutterapp/ui/homePost/home_posts_widget.dart';
 import 'package:flutterapp/ui/components/stories_widget.dart';
+import 'package:flutterapp/ui/services/eld_gps_service_screen.dart';
+import 'package:flutterapp/ui/services/finance_factoring_service_screen.dart';
+import 'package:flutterapp/ui/services/question_answer_service.dart';
+import 'package:flutterapp/ui/smart_search/search_cdl_schools_screen.dart';
 import 'package:flutterapp/utills/UiColors.dart';
 import 'package:flutterapp/utills/brokers_avatar.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';
 import 'package:flutterapp/models/services_model.dart';
 import 'package:flutterapp/ui/services/job_services_screen.dart';
+import 'package:flutterapp/ui/services/company_reviews_services.dart';
+import 'package:flutterapp/ui/services/repair_services_screen.dart';
+import 'package:flutterapp/ui/services/cdl_school_service_screen.dart';
 
 import 'package:flutter/widgets.dart';
 import 'package:lottie/lottie.dart';
@@ -291,20 +298,21 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
                             width: 60.0,
                             height: 60.0,
                             decoration: new BoxDecoration(
-                              color: smokeybgColor,
                                 shape: BoxShape.circle,
+                                border: Border.all(color: colorDivider)
                                ),
                             child:Padding(padding: EdgeInsets.all(4),
                             child:    Container(
                               decoration: new BoxDecoration(
                                   color: smokeybgColor,
                                   shape: BoxShape.circle,
-                                  border: Border.all(color: UiColors.white)),
+                                  border: Border.all(color: colorDivider)),
 
                               child: Padding(
-                                padding: EdgeInsets.all(13),
+                                padding: EdgeInsets.all(09),
                                 child:SvgPicture.asset(
                                   list.image,
+                                  color: colorMain,
                                 ) ,
 
                               ),
@@ -568,6 +576,67 @@ class _DasboardHomeMainState extends State<DasboardHomeMain> {
           context,
           MaterialPageRoute(
             builder: (context) => JobServicesScreen(
+              currentUserImage: basicImageUrl,
+            ),
+          ),
+        );
+        break;
+
+      case 3:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => EldGpsServiceScreen(
+              currentUserImage: basicImageUrl,
+            ),
+          ),
+        );
+        break;
+      case 4:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => FinanceFactoringScreen(
+              currentUserImage: basicImageUrl,
+            ),
+          ),
+        );
+        break;
+      case 5:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => QuestionAnswersScreen(
+              currentUserImage: basicImageUrl,
+            ),
+          ),
+        );
+        break;
+      case 6:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CDLSchoolScreen(
+              currentUserImage: basicImageUrl,
+            ),
+          ),
+        );
+        break;
+      case 8:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => CompanyReviewsServiceScreen(
+              currentUserImage: basicImageUrl,
+            ),
+          ),
+        );
+        break;
+      case 9:
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => RepairServicesScreen(
               currentUserImage: basicImageUrl,
             ),
           ),

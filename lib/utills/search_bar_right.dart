@@ -9,6 +9,7 @@ import 'package:flutterapp/ui/smart_search/search_eldgps_screen.dart';
 import 'package:flutterapp/ui/smart_search/search_buy_lease_screen.dart';
 import 'package:flutterapp/ui/smart_search/types_list_screen.dart';
 import 'package:flutterapp/ui/profiles/user_profile.dart';
+import 'package:flutterapp/utills/UiColors.dart';
 import 'package:flutterapp/utills/config.dart';
 import 'package:flutterapp/utills/main_dashboar_custom_menu.dart';
 import '../shimmer/filterListView.dart';
@@ -61,7 +62,8 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                     Expanded(
                       flex: 1,
                       child: IconButton(
-                        icon: Icon(Icons.menu),
+                        icon: Icon(Icons.menu,
+                          color: Colors.black87,),
                         onPressed: () {
                           Scaffold.of(context).openDrawer();
                         },
@@ -90,8 +92,8 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                                 !widget.store.isMapVisible
                                     ? "assets/icon_map_click.svg"
                                     : "assets/icon_list_view.svg",
-                                color: Colors.black,
                                 height: 30,
+                                color: Colors.black45,
                               ),
                             ),
                           )
@@ -109,7 +111,7 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                           "assets/icon_notification.svg",
                           allowDrawingOutsideViewBox: true,
                           height: 30,
-                          color: Colors.black,
+                          color: Colors.black45,
                         ),
                       ),
                     ),
@@ -126,7 +128,7 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
                           "assets/message.svg",
                           allowDrawingOutsideViewBox: true,
                           height: 30,
-                          color: Colors.black,
+                          color: Colors.black45,
                         ),
                       ),
                     ),
@@ -213,7 +215,9 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
               alignment: Alignment.centerLeft,
               height: 28,
               decoration: BoxDecoration(
-                border: Border.all(width: 1, color: Colors.black),
+                border: Border.all(width: 1,
+                  color: Colors.black45,
+                ),
                 color: Colors.white,
                 borderRadius: BorderRadius.all(
                    Radius.circular(32),
@@ -221,18 +225,14 @@ class _MyCustomAppBarRight extends State<MyCustomAppBarRight> {
               ),
               child: Row(
                 children: <Widget>[
-                  SvgPicture.asset(
-                    "assets/search_icon.svg",
-                    allowDrawingOutsideViewBox: true,
-                    height: 14,
-                  ),
+
                   Padding(
                     padding: const EdgeInsets.only(left:5.0),
                     child: Text("Search",
                       overflow: TextOverflow.ellipsis,
                       maxLines: 1,
                       textAlign: TextAlign.center,
-                      style: TextStyle(fontSize: 12,color: Colors.black),
+                      style: TextStyle(fontSize: 12,color: Colors.black45),
                     ),
                   ),
                 ],

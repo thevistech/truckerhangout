@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutterapp/models/list_places.dart';
+import 'package:flutterapp/utills/UiColors.dart';
 import 'config.dart';
 
 class CustomTabBar extends StatefulWidget { //This is BUY TabView working
@@ -14,13 +15,15 @@ class _CustomTabBarState extends State<CustomTabBar> {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-      itemCount: places.length,
+      shrinkWrap: true,
+      primary: false,
+      itemCount: 3,
       itemBuilder: (context, index) {
         return Container(
+
           // height: 150,
-          padding: EdgeInsets.all(2),
-          margin: EdgeInsets.fromLTRB(4, 4, 4, 2),
           decoration: BoxDecoration(
+              color: UiColors.red,
               border: Border.all(color: Colors.grey),
               borderRadius: BorderRadius.all(Radius.circular(6.0))),
           child: Column(
@@ -34,7 +37,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
                     child: ClipRRect(
                       borderRadius: BorderRadius.all(Radius.circular(6.0)),
                       child: Image.network(
-                        places[index].imageUrl,
+                        'places[index].imageUrl',
                         fit: BoxFit.fill,
                         //  width: 140,
                         height: 120,
@@ -50,7 +53,7 @@ class _CustomTabBarState extends State<CustomTabBar> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: <Widget>[
                             Text(
-                              places[index].stateName,
+                              'places[index].stateName',
                               style: TextStyle(
                                   color: colorMain,
                                   fontWeight: FontWeight.bold),
@@ -59,20 +62,20 @@ class _CustomTabBarState extends State<CustomTabBar> {
                               height: 5,
                             ),
                             Text(
-                              places[index].description,
+                              'places[index].description',
                               style:
                                   TextStyle(fontSize: 11, color: Colors.black),
                             ),
                             SizedBox(
                               height: 5,
                             ),
-                            Text(places[index].location,
+                            Text('places[index].location',
                                 style: TextStyle(
                                     color: colorMain, fontSize: 12.0)),
                             SizedBox(
                               height: 5,
                             ),
-                            Text(places[index].userName,
+                            Text('places[index].userName',
                                 style: TextStyle(color: colorMain)),
                             SizedBox(
                               height: 5,

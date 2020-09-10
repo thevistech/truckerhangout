@@ -266,7 +266,7 @@ class SlideTile extends StatelessWidget {
               ),
               Text(desc,
                   textAlign: TextAlign.center,
-                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14,color: Colors.black)),
+                  style: TextStyle(fontWeight: FontWeight.w500, fontSize: 14,color: Colors.white)),
             ],
           ))
         ],

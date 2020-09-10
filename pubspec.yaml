@@ -82,6 +82,7 @@ dependencies:
   flutter_star_rating: ^0.0.2
   audio_recorder: ^1.0.2
   flutter_polyline_points: ^0.1.0
+  animated_text_kit: ^2.2.0
 
 
 dev_dependencies:

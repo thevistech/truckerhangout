@@ -55,7 +55,7 @@ List<SliderModel> getSlides() {
   sliderModel.setDesc(
       "Find best offers at the lowest rates for trucking services. Great offers!");
   sliderModel.setTitle("ELD/GPS Devices");
-  sliderModel.setImageAssetPath("assets/market_place.png");
+  sliderModel.setImageAssetPath("assets/eld_gps.png");
   slides.add(sliderModel);
   sliderModel = new SliderModel();
 
